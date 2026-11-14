@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "missing_tested": 50,
+    "missing_present_in_archive": 0,
+    "missing_absent_in_archive_window": 50,
+    "missing_present_but_original_rules_drop": 0,
+    "missing_original_rules_would_emit": 0,
+    "positive_control_tested": 10,
+    "positive_control_present_in_archive": 10,
+    "positive_control_absent_in_archive_window": 0,
+    "positive_control_present_but_original_rules_drop": 0,
+    "positive_control_original_rules_would_emit": 10
+  },
+  "all_controls_found": true,
+  "interpretation": [
+    "Raw presence distinguishes IDs available in this archive window from IDs absent from that scan.",
+    "Present IDs dropped by the rules need lifecycle, heading-version, action, and reviewer inspection.",
+    "IDs that original rules would emit but are absent from the CSV need query/export provenance inspection.",
+    "Absence does not establish why an event was not captured, or that it was absent in every archive window.",
+    "Current API headings may have been added after the historical event; mixed causes are possible."
+  ]
+}

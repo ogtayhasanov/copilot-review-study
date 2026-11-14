@@ -232,7 +232,7 @@ def render_context(context):
     return text, table(caption, 'tab:approval-context', ['Merged PR group', 'Count', 'Share'], rows, True), markdown('Table 3. Approval-record context', ['Merged PR group', 'Count', 'Share'], rows)
 
 
-def render(result, audit, probe, repository_url=None, context=None):
+def render(result, audit, probe, repository_url=None, context=None, heading_audit=None):
     c, o, f, a = result["counts"], result["outcomes"], result["formal_approvals"], audit["counts"]
     def frac(n, d): return ratio(n, d), percent(n, d)
     formal = [
@@ -274,8 +274,21 @@ def render(result, audit, probe, repository_url=None, context=None):
         "AuditGroupChanges": a["group_changes_adding_missing_reviews"],
         "ProbeMissingTested": probe["missing_tested"], "ProbeMissingFound": probe["missing_found"],
         "ProbeControlsTested": probe["positive_control_tested"], "ProbeControlsFound": probe["positive_control_found"]}
+    raw.update({
+        'ReadyMerged': o['ready']['merged'], 'ChangesMerged': o['not_ready']['merged'],
+        'ReadyTerminalPRs': o['ready']['merged'] + o['ready'].get('closed', 0),
+        'ChangesTerminalPRs': o['not_ready']['merged'] + o['not_ready'].get('closed', 0)})
+    if heading_audit is not None:
+        raw['SampleFormalReviews'] = heading_audit['counts']['qualifying_approval_reviews']
+        raw['SampleFormalHeadings'] = heading_audit['counts']['qualifying_approval_reviews_with_heading']
     macros = {k: number(v) for k, v in raw.items()}
     rates = {
+        'ReadyTerminalMergeRate': (raw['ReadyMerged'], raw['ReadyTerminalPRs']),
+        'ChangesTerminalMergeRate': (raw['ChangesMerged'], raw['ChangesTerminalPRs']),
+        'ReadyOpenRate': (o['ready'].get('open', 0), o['ready']['prs']),
+        'ChangesOpenRate': (o['not_ready'].get('open', 0), o['not_ready']['prs']),
+        'FormalShareOfMergedText': (raw['FormalMerged'], raw['OutcomeMerged']),
+        'ChangesFormalBoundRate': (raw['ChangesMatches'], raw['ChangesComparable'] - raw['FormalMerged']),
         "ReadyMatchRate": (o['ready']['matching_heads'], o['ready']['comparable_merged']),
         "CoverageRate": (c["review_lists_complete"], c["input_prs"]),
         "ReadyMergeRate": (o["ready"]["merged"], o["ready"]["prs"]),
@@ -291,6 +304,7 @@ def render(result, audit, probe, repository_url=None, context=None):
         "AuditGroupChangeRate": (a["group_changes_adding_missing_reviews"], a["accessible_with_frozen_state"])}
     macros.update({k: latex(percent(n, d)) for k, (n, d) in rates.items()})
     macros["MergeGapPP"] = f"{100*(o['ready']['merged']/o['ready']['prs']-o['not_ready']['merged']/o['not_ready']['prs']):.1f}"
+    macros['TerminalMergeGapPP'] = f"{100*(raw['ReadyMerged']/raw['ReadyTerminalPRs']-raw['ChangesMerged']/raw['ChangesTerminalPRs']):.1f}"
     for label,n,d in [("AuditMissingPR",a['prs_with_missing_qualifying_reviews'],a['accessible']),
                       ("AuditGroupChange",a['group_changes_adding_missing_reviews'],a['accessible_with_frozen_state'])]:
         z=1.959963984540054; phat=n/d; den=1+z*z/d
@@ -309,6 +323,8 @@ def render(result, audit, probe, repository_url=None, context=None):
         extra_macros, context_table, context_markdown = render_context(context)
         rendered['results_macros.tex'] += extra_macros
         rendered['approval_context_table.tex'] = context_table
+    if heading_audit is not None:
+        rendered['formal_heading_audit.json'] = json.dumps(heading_audit, indent=2) + '\n'
     rendered["tables.md"] = "\n".join([
         markdown("Table 1. Text assessments", ["Assessment", "PRs", "Merged", "Matching heads among merges"], outcome),
         markdown("Table 2. Formal approvals", ["Measure", "Count", "Share"], formal),
@@ -363,13 +379,16 @@ def main():
         result_hash = hashlib.sha256(args.results.read_bytes()).hexdigest()
         context = json.loads(args.approval_context.read_text(encoding='utf-8-sig'))
         validate_context(context, result, result_hash)
-        outputs = render(result, audit, probe, args.repository_url, context)
+        from audit.formal_approval_headings import inspect_sample
+        heading_audit = inspect_sample(home/'data/api_validation_seed.json', home/'data/frozen/pr_states.csv', home/'data/frozen/pr_states_recovered.csv')
+        outputs = render(result, audit, probe, args.repository_url, context, heading_audit)
         manifest = {**verified, "result_file": args.results.name,
                     "result_sha256": hashlib.sha256(args.results.read_bytes()).hexdigest(),
                     "repository_url": args.repository_url, "tables": ["outcome_table.tex", "formal_table.tex", "approval_context_table.tex", "archive_table.tex"],
                     "approval_context_file": args.approval_context.name,
                     "approval_context_sha256": hashlib.sha256(args.approval_context.read_bytes()).hexdigest(),
                     "approval_context_validation": "saved-analysis hash, supplied checkpoint/formal counts, cohort partitions, and repository aggregates; raw reviews remain in the local checkpoint",
+                    'formal_heading_sample_counts': heading_audit['counts'],
                     "formal_approval_validation": "aggregate constraints; approval-level records are in the native-review checkpoint"}
         outputs["build_manifest.json"] = json.dumps(manifest, indent=2) + "\n"
         args.out_dir.parent.mkdir(parents=True, exist_ok=True)

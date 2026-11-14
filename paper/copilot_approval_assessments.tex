@@ -218,6 +218,19 @@ merge when every qualifying review has a submission time strictly later
 than the recorded merge time. Another \NoCurrentMergedReview{} linked merged PRs had no current
 qualifying review and remain unclassified for this timing rate.
 
+A formal approval state is distinct from an assessment heading. A later
+formal approval without a recognized heading does not supersede the last
+qualifying text assessment used in Table~\ref{tab:outcomes}. In the
+validation sample, none of the \SampleFormalReviews{} qualifying Copilot
+approval reviews carried a recognized assessment heading. Thus a PR's
+selected text assessment can precede a later formal approval. At most
+\FormalMerged{} merged text-cohort PRs (\FormalShareOfMergedText{}) have
+a qualifying formal Copilot approval. Even if all of them were
+different-head merges in the changes group, excluding them would raise
+that group's matching-head share only from \ChangesMatchRate{} to
+\ChangesFormalBoundRate{}. This is a conservative upper bound, not an
+observed reclassification of all formal-approval PRs.
+
 A formal approval is identified independently of the text heading,
 using a Copilot review whose current API state is \texttt{APPROVED},
 submitted in the study window and within the observed PR lifetime.
@@ -278,6 +291,15 @@ Table~\ref{tab:outcomes} reports the main text-assessment outcomes.
 Approval recommendations had a merge rate of \ReadyMergeRate{};
 changes recommendations had a merge rate of \ChangesMergeRate{}.
 The difference was \MergeGapPP{} percentage points.
+Among PRs recorded as merged or closed, merge rates were
+\ReadyTerminalMergeRate{} (\ReadyMerged{} of \ReadyTerminalPRs{}) after
+approval recommendations and \ChangesTerminalMergeRate{}
+(\ChangesMerged{} of \ChangesTerminalPRs{}) after changes recommendations,
+a gap of \TerminalMergeGapPP{} percentage points. Open PRs made up
+\ReadyOpenRate{} of the approval group and \ChangesOpenRate{} of the
+changes group. These terminal-only rates remain descriptive and do not
+standardize the amount of follow-up.
+
 
 \input{generated/outcome_table.tex}
 
@@ -467,26 +489,25 @@ using complete API review histories and reporting assessment selection,
 timing, approval-state, commit definitions, and repository composition
 explicitly.
 
+\clearpage
 \section{Reproducibility and AI assistance}
 
-The replication materials include the frozen input frame and outcome
-files, selected PR-level text-assessment results, fixed validation
-samples, collection and analysis scripts, and the approval-context audit
-output. The paper build script regenerates
+Replication materials include frozen inputs and outcomes, selected PR-level
+text-assessment results, validation samples, collection and analysis
+scripts, and the approval-context audit. The build regenerates
 Tables~\ref{tab:outcomes}--\ref{tab:audit}, Figure~\ref{fig:outcomes}, and
-the reported percentages from the saved machine-readable analysis files.
-The raw-archive query and its result are included.
+percentages from saved machine-readable results. The raw-archive query
+and its result are included.
 
 The full native-review \texttt{reviews.sqlite} checkpoint is retained
-locally and is not included in the repository. The saved results support
-rebuilding the reported tables and checking selected text-assessment
-rows. Independently recounting formal approvals and the approval-record
-baselines requires that checkpoint. The approval-context audit checks
-that the reconstructed text cohort and original formal-approval counts
-match the saved analysis before computing its additional aggregates.
+locally and is not bundled. Independently recounting formal approvals
+and approval-record baselines requires that checkpoint. The context audit
+verifies the reconstructed text cohort and original formal counts against
+the saved analysis before computing additional aggregates.
 \RepositoryLink{}
 
 ChatGPT assisted with script development, analysis checks, and drafting.
+
 
 \begin{thebibliography}{99}
 \small

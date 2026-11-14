@@ -10,7 +10,7 @@ from pathlib import Path
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("result_csv", type=Path)
-    p.add_argument("--sample", type=Path, default=Path(__file__).with_name("missing_review_id_sample.csv"))
+    p.add_argument("--sample", type=Path, default=Path(__file__).resolve().parents[1]/"data/probe_targets.csv")
     args = p.parse_args()
     with args.sample.open(encoding="utf-8-sig", newline="") as f:
         expected = {r["review_id"]: r["kind"] for r in csv.DictReader(f)}

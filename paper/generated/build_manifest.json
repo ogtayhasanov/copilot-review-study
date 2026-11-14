@@ -13,5 +13,16 @@
   "approval_context_file": "approval_context_results.json",
   "approval_context_sha256": "1a315f3975283dc5bd43f8bbb595f70206eb2bb7548f7140ed32a88a2e82f6e4",
   "approval_context_validation": "saved-analysis hash, supplied checkpoint/formal counts, cohort partitions, and repository aggregates; raw reviews remain in the local checkpoint",
+  "formal_heading_sample_counts": {
+    "all_approval_reviews": 11,
+    "all_approval_reviews_with_heading": 0,
+    "qualifying_approval_reviews": 10,
+    "qualifying_approval_reviews_with_heading": 0,
+    "qualifying_approval_prs": 10,
+    "selected_uncertain": 5,
+    "last_copilot_review_is_approved": 10,
+    "last_copilot_review_matches_saved_head": 10,
+    "selected_not_ready": 5
+  },
   "formal_approval_validation": "aggregate constraints; approval-level records are in the native-review checkpoint"
 }

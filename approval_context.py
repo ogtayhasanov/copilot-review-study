@@ -2,7 +2,7 @@
 """Audit approval baselines and repository concentration, using a read-only checkpoint.
 
 Usage: python approval_context.py PATH_TO_reviews.sqlite
-Python 3.10+, standard library only. No network requests or database writes.
+Python 3.11+, standard library only. No network requests or database writes.
 Run from the study repository or keep the standalone inputs and _study folders beside the script.
 """
 import argparse

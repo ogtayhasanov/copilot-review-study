@@ -1,0 +1,131 @@
+{
+  "counts": {
+    "all_approval_reviews": 11,
+    "all_approval_reviews_with_heading": 0,
+    "qualifying_approval_reviews": 10,
+    "qualifying_approval_reviews_with_heading": 0,
+    "qualifying_approval_prs": 10,
+    "selected_uncertain": 5,
+    "last_copilot_review_is_approved": 10,
+    "last_copilot_review_matches_saved_head": 10,
+    "selected_not_ready": 5
+  },
+  "cases": [
+    {
+      "repo": "apollosproject/bug-board",
+      "pr": 574,
+      "formal_review_ids": [
+        "5385820675"
+      ],
+      "selected_text_group": "uncertain",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    },
+    {
+      "repo": "c01dsummer/kol-outreach-skill",
+      "pr": 106,
+      "formal_review_ids": [
+        "5181143886"
+      ],
+      "selected_text_group": "uncertain",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    },
+    {
+      "repo": "scaryrawr/copilot-sdk-zig",
+      "pr": 10,
+      "formal_review_ids": [
+        "5179506712"
+      ],
+      "selected_text_group": "uncertain",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    },
+    {
+      "repo": "stgerman/nat20",
+      "pr": 3,
+      "formal_review_ids": [
+        "5560103680"
+      ],
+      "selected_text_group": "not_ready",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    },
+    {
+      "repo": "thomasmichon/copilot-extensions",
+      "pr": 4518,
+      "formal_review_ids": [
+        "5348150267"
+      ],
+      "selected_text_group": "not_ready",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    },
+    {
+      "repo": "thomasmichon/copilot-extensions",
+      "pr": 6066,
+      "formal_review_ids": [
+        "5484153551"
+      ],
+      "selected_text_group": "uncertain",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    },
+    {
+      "repo": "thomasmichon/copilot-extensions",
+      "pr": 7295,
+      "formal_review_ids": [
+        "5579827299"
+      ],
+      "selected_text_group": "not_ready",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    },
+    {
+      "repo": "thomasmichon/copilot-extensions",
+      "pr": 9731,
+      "formal_review_ids": [
+        "5721215731"
+      ],
+      "selected_text_group": "uncertain",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    },
+    {
+      "repo": "vanillagreencom/kendex",
+      "pr": 6252,
+      "formal_review_ids": [
+        "5821589912"
+      ],
+      "selected_text_group": "not_ready",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    },
+    {
+      "repo": "vincentk/dedekind",
+      "pr": 913,
+      "formal_review_ids": [
+        "5277228473"
+      ],
+      "selected_text_group": "not_ready",
+      "selected_text_sha_match": false,
+      "last_copilot_review_is_approved": true,
+      "last_copilot_review_matches_saved_head": true
+    }
+  ],
+  "inputs_sha256": {
+    "api_validation_seed.json": "c0b62730fa32ebd8279408000a047c3b46de8784fef0f34b74789ee1a8cce3e1",
+    "pr_states.csv": "1a988a391e1cacd610d9ccb00108fe9eea24cd7623119c1e3726f286b296b79d",
+    "pr_states_recovered.csv": "e3e979a6f4e6795ed634c9e288e7b70c63f42b8f5d342a2f815d77c49faa21d1"
+  },
+  "scope": "Saved complete validation review lists and frozen states; not a full-checkpoint recount."
+}

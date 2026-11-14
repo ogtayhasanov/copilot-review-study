@@ -27,7 +27,7 @@ These are observations about API review records and commit identity. An absent c
 
 ## Reproduce the tables and figure
 
-Use Python 3.10 or later. In the extracted repository folder, run:
+Use Python 3.11 or later. In the extracted repository folder, run:
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -64,7 +64,7 @@ The PDF already included in `paper/` is the visually checked rendering from the 
 | `data/probe_targets.csv` | Fixed missing/control ID manifest |
 | `data/head_audit_results.json` | Twenty-PR saved-head audit |
 | `collection/` | REST/GraphQL collectors, full analyzer, and behavior checks |
-| `audit/` | Raw-archive queries and probe summarizer |
+| `audit/` | Raw-archive queries, probe summarizer, and the saved-sample formal-approval heading audit |
 | `paper/` | PDF, LaTeX manuscript, generated tables, and figure |
 | `CHECKSUMS.sha256` | SHA256 of every other included file |
 
@@ -88,6 +88,16 @@ python approval_context.py "PATH_TO_REVIEWS.sqlite" --output-prefix recomputed_a
 ```
 
 This uses the bundled frozen inputs, makes no network requests, and opens the checkpoint read-only. It verifies the original selected text cohort and every formal-approval aggregate before computing the additional baselines. It reports canonical repository identities where saved, including renamed-repository aliases.
+
+## Artifact coverage
+
+The package includes the review collectors, the full review analyzer, the frozen inputs and audit outputs, and the paper build. The original input-frame BigQuery export query and the one-off scripts used to fetch the validation sample, build its reconciliation output, fetch frozen PR states, and run the head audit are not included. Those historical steps are therefore not fully reproducible from the bundled scripts. The saved files allow the reported analyses and paper outputs to be checked; re-fetching current records would not reconstruct the historical data exactly.
+
+The build also recounts formal approval headings from the saved validation sample and reports the terminal-only merge-rate sensitivity. To inspect the sample cases independently:
+
+```powershell
+python audit/formal_approval_headings.py
+```
 
 ## Archive audit
 

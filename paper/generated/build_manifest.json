@@ -5,9 +5,13 @@
   "result_sha256": "855a833ee7b022ddb21613e5a64911391a235f4d0ef4325b6ebc71bf35618431",
   "repository_url": "https://github.com/ogtayhasanov/copilot-review-study",
   "tables": [
-    "formal_table.tex",
     "outcome_table.tex",
+    "formal_table.tex",
+    "approval_context_table.tex",
     "archive_table.tex"
   ],
+  "approval_context_file": "approval_context_results.json",
+  "approval_context_sha256": "1a315f3975283dc5bd43f8bbb595f70206eb2bb7548f7140ed32a88a2e82f6e4",
+  "approval_context_validation": "saved-analysis hash, supplied checkpoint/formal counts, cohort partitions, and repository aggregates; raw reviews remain in the local checkpoint",
   "formal_approval_validation": "aggregate constraints; approval-level records are in the native-review checkpoint"
 }

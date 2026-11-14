@@ -1,0 +1,17 @@
+\begin{table}[H]
+\centering
+\caption{Current user-account approval records among merged PRs. Each row counts PRs without a qualifying user-account approval by merge. Repository-restricted rows exclude formal Copilot approvals and use repositories represented in the full formal-approval cohort.}
+\label{tab:approval-context}
+\small
+\begin{tabular}{@{}p{0.60\linewidth}rr@{}}
+\toprule
+Merged PR group & Count & Share \\
+\midrule
+Formal Copilot approvals & 389/418 & 93.1\% \\
+All merged text-assessment PRs & 40,702/59,759 & 68.1\% \\
+Text-assessment PRs without formal Copilot approval & 40,313/59,341 & 67.9\% \\
+Nonformal comparison PRs in formal-cohort repositories & 1,114/1,193 & 93.4\% \\
+Same repositories, merged on/after first formal approval & 1,100/1,179 & 93.3\% \\
+\bottomrule
+\end{tabular}
+\end{table}

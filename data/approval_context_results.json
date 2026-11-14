@@ -1,0 +1,1471 @@
+{
+  "baseline_no_current_user_approval_by_merge": {
+    "merged_text_cohort": {
+      "numerator": 40702,
+      "denominator": 59759,
+      "percent": 68.110243
+    },
+    "merged_text_cohort_without_formal_copilot_approval": {
+      "numerator": 40313,
+      "denominator": 59341,
+      "percent": 67.93448
+    },
+    "nonformal_text_merges_in_formal_cohort_repositories": {
+      "numerator": 1114,
+      "denominator": 1193,
+      "percent": 93.378039
+    },
+    "same_repositories_and_merged_on_or_after_first_formal_approval": {
+      "numerator": 1100,
+      "denominator": 1179,
+      "percent": 93.299406
+    },
+    "formal_copilot_merged_cohort": {
+      "numerator": 389,
+      "denominator": 418,
+      "percent": 93.062201
+    }
+  },
+  "formal_approval_repository_concentration": {
+    "prs": 429,
+    "repositories": 137,
+    "repository_identity": "canonical_repo when saved, otherwise frozen roster repo",
+    "original_roster_repository_count": 138,
+    "top_1": {
+      "numerator": 104,
+      "denominator": 429,
+      "percent": 24.242424
+    },
+    "top_5": {
+      "numerator": 167,
+      "denominator": 429,
+      "percent": 38.927739
+    },
+    "top_10": {
+      "numerator": 198,
+      "denominator": 429,
+      "percent": 46.153846
+    },
+    "per_repository": [
+      {
+        "repository": "thomasmichon/copilot-extensions",
+        "prs": 104,
+        "percent": 24.242424
+      },
+      {
+        "repository": "vanillagreencom/kendex",
+        "prs": 36,
+        "percent": 8.391608
+      },
+      {
+        "repository": "basecamp/basecamp-cli",
+        "prs": 10,
+        "percent": 2.331002
+      },
+      {
+        "repository": "rickmcphee/discogs-browser",
+        "prs": 10,
+        "percent": 2.331002
+      },
+      {
+        "repository": "c01dsummer/kol-outreach-skill",
+        "prs": 7,
+        "percent": 1.631702
+      },
+      {
+        "repository": "daabr/versipellis",
+        "prs": 7,
+        "percent": 1.631702
+      },
+      {
+        "repository": "deividfortuna/babysitter",
+        "prs": 6,
+        "percent": 1.398601
+      },
+      {
+        "repository": "hao1939/herdr-supervisor",
+        "prs": 6,
+        "percent": 1.398601
+      },
+      {
+        "repository": "hao1939/may-agent",
+        "prs": 6,
+        "percent": 1.398601
+      },
+      {
+        "repository": "proteanhq/protean",
+        "prs": 6,
+        "percent": 1.398601
+      },
+      {
+        "repository": "rezamahmood/llm-dungeon",
+        "prs": 6,
+        "percent": 1.398601
+      },
+      {
+        "repository": "tradecn/ui",
+        "prs": 6,
+        "percent": 1.398601
+      },
+      {
+        "repository": "arv/serf",
+        "prs": 5,
+        "percent": 1.165501
+      },
+      {
+        "repository": "chmouel/liseur",
+        "prs": 5,
+        "percent": 1.165501
+      },
+      {
+        "repository": "knobanlabs/meshcore-desktop",
+        "prs": 5,
+        "percent": 1.165501
+      },
+      {
+        "repository": "kyverno/kyverno",
+        "prs": 5,
+        "percent": 1.165501
+      },
+      {
+        "repository": "okayyoumay/nekoguruma",
+        "prs": 5,
+        "percent": 1.165501
+      },
+      {
+        "repository": "scaryrawr/copilot-sdk-zig",
+        "prs": 5,
+        "percent": 1.165501
+      },
+      {
+        "repository": "wolfware-labs/artic",
+        "prs": 5,
+        "percent": 1.165501
+      },
+      {
+        "repository": "aglose/apksim",
+        "prs": 4,
+        "percent": 0.932401
+      },
+      {
+        "repository": "elsa-workflows/elsa-core",
+        "prs": 4,
+        "percent": 0.932401
+      },
+      {
+        "repository": "hankehly/power-market-analytics",
+        "prs": 4,
+        "percent": 0.932401
+      },
+      {
+        "repository": "spiceai/docs",
+        "prs": 4,
+        "percent": 0.932401
+      },
+      {
+        "repository": "vanillagreencom/vsys",
+        "prs": 4,
+        "percent": 0.932401
+      },
+      {
+        "repository": "wolfware-labs/mora-lang",
+        "prs": 4,
+        "percent": 0.932401
+      },
+      {
+        "repository": "dennispayne/astrostack-downloader",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "elsa-workflows/elsa-foundation",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "eruvalca/nova",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "flexpair/mumbling-mole",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "godaddy/antares",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "hacker-cb/claude-code-plugins",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "maba-pag/owlbear",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "mrploch/ploch-commandline",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "scaryrawr/scarypilot",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "spineeventengine/config",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "spudly/eciperay",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "srz-zumix/go-gh-extension",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "zaffnet/whetstone",
+        "prs": 3,
+        "percent": 0.699301
+      },
+      {
+        "repository": "abradner/hoist",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "aetos382/devcontainer-features",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "akhiakl/svgin-react",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "basecamp/hey-cli",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "basecamp/lexxy",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "bingblop/adb-application-manager",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "cbattlegear/meshcoreone-android",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "daiksud/agents",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "dfinity/governance-app",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "dfinity/nns-dapp",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "dherault/strategydance",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "edenhaus/lotse",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "elsa-workflows/elsa-blog",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "jethome-iot/jethome-dev",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "lindayi/hermes-mobile",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "msxorg/docs",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "nicosandller/easy-floorplan",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "phrocker/shoal-oss",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "rajbos/ai-engineering-fluency",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "sikebe/ghpmv",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "songmu/slidown",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "tinkerologie/ha-unifi-insights",
+        "prs": 2,
+        "percent": 0.4662
+      },
+      {
+        "repository": "achi1984/meridian",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "aeirola/react-native-svg-app-icon",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "andrew199617/js-syntax-extension",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "antigenomics/mhcmatch",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "apollosproject/bug-board",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "askpt/code-metrics",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "barrettclark/sqlite2pg",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "basecamp/hey-sdk",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "bcinarli/pane-peek",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "bezoar/pdf2epub",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "bloquo-inc/.github",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "cwtch-consulting/tocyn",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "cyberticalai/.github",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "domblack/git-stack",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "dorssel/dotnet-debounce",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "drluckyspin/go-remote",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "elsa-workflows/elsa-extensions",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "elsa-workflows/elsa-studio",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "eruvalca/yhab",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "fffergal/armstrongthanksgiving",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "fingerprintjs/flow-cloudflare-worker",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "flintstrike-nz/cinnabarr",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "fupacat/girdle",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "glyad/shell-web-components-governance",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "havit/havit.blazor",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "hoshinosuzumi/chronoframe",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "iroha71/mementolane-app",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "jdgarciauc3m/wg21-papers",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "jethome-iot/esphome-device-configs",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "jewelsjlf/whx",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "joelst/flint",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "jsnjack/wakeci",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "kosnu/savings",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "kyverno/website",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "ladybluenotes/grandtheftrepo",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "lmorchard/wideboi",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "lowlydba/lowlydba.sqlserver",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "masonorg357/copilot-review-rename-fixture-20260915",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "msxorg/.github",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "mtransitapps/commons-android",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "nise-nabe/armeria-intellij-plugin",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "obnoxxx/python-collectionbox",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "opencost/opencost",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "pgrudzien12/openhornedrat",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "pimcore/pimcore",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "pimcore/studio-ui-bundle",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "qautomateoy/qualweb",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "rafaelkallis/litellm-as-code",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "review-gate-test-org/approval-review-gate",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "romanr92/adaptive-pi",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "scarver2/howdy-world",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "sourceblender/musubi",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "spiceai/datafusion",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "spiceai/datafusion-federation",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "spiceai/datafusion-table-providers",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "spiceai/llama.cpp",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "spiceai/spice-dotnet",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "spiceai/spice-java",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "staffbase/gq",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "starknet-innovation/ethereum-cctp-strk20",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "stepankuzmin/skills",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "stgerman/nat20",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "tabler/tabler",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "taisehub/copilot-approval-path-boundary-20260905",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "the-pr-agent/pr-agent",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "tipee-sa/alfred",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "ulfiac/aws-bootstrap",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "ulfiac/containers",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "ulfiac/infra",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "upu/yamoru",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "vincentk/dedekind",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "wdaz/ai-native-personal-finance",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "wolfware-labs/pavia",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "xedahq/xeda",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "xxvampiricshadowxx/bsky-news-feed-bot",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "zhfans/dotagents",
+        "prs": 1,
+        "percent": 0.2331
+      },
+      {
+        "repository": "zhfans/ragged-batch",
+        "prs": 1,
+        "percent": 0.2331
+      }
+    ]
+  },
+  "merged_formal_approval_repository_concentration": {
+    "prs": 418,
+    "repositories": 133,
+    "repository_identity": "canonical_repo when saved, otherwise frozen roster repo",
+    "original_roster_repository_count": 134,
+    "top_1": {
+      "numerator": 104,
+      "denominator": 418,
+      "percent": 24.880383
+    },
+    "top_5": {
+      "numerator": 166,
+      "denominator": 418,
+      "percent": 39.712919
+    },
+    "top_10": {
+      "numerator": 197,
+      "denominator": 418,
+      "percent": 47.129187
+    },
+    "per_repository": [
+      {
+        "repository": "thomasmichon/copilot-extensions",
+        "prs": 104,
+        "percent": 24.880383
+      },
+      {
+        "repository": "vanillagreencom/kendex",
+        "prs": 36,
+        "percent": 8.61244
+      },
+      {
+        "repository": "rickmcphee/discogs-browser",
+        "prs": 10,
+        "percent": 2.392344
+      },
+      {
+        "repository": "basecamp/basecamp-cli",
+        "prs": 9,
+        "percent": 2.15311
+      },
+      {
+        "repository": "c01dsummer/kol-outreach-skill",
+        "prs": 7,
+        "percent": 1.674641
+      },
+      {
+        "repository": "daabr/versipellis",
+        "prs": 7,
+        "percent": 1.674641
+      },
+      {
+        "repository": "deividfortuna/babysitter",
+        "prs": 6,
+        "percent": 1.435407
+      },
+      {
+        "repository": "hao1939/herdr-supervisor",
+        "prs": 6,
+        "percent": 1.435407
+      },
+      {
+        "repository": "hao1939/may-agent",
+        "prs": 6,
+        "percent": 1.435407
+      },
+      {
+        "repository": "proteanhq/protean",
+        "prs": 6,
+        "percent": 1.435407
+      },
+      {
+        "repository": "tradecn/ui",
+        "prs": 6,
+        "percent": 1.435407
+      },
+      {
+        "repository": "arv/serf",
+        "prs": 5,
+        "percent": 1.196172
+      },
+      {
+        "repository": "chmouel/liseur",
+        "prs": 5,
+        "percent": 1.196172
+      },
+      {
+        "repository": "knobanlabs/meshcore-desktop",
+        "prs": 5,
+        "percent": 1.196172
+      },
+      {
+        "repository": "okayyoumay/nekoguruma",
+        "prs": 5,
+        "percent": 1.196172
+      },
+      {
+        "repository": "rezamahmood/llm-dungeon",
+        "prs": 5,
+        "percent": 1.196172
+      },
+      {
+        "repository": "scaryrawr/copilot-sdk-zig",
+        "prs": 5,
+        "percent": 1.196172
+      },
+      {
+        "repository": "wolfware-labs/artic",
+        "prs": 5,
+        "percent": 1.196172
+      },
+      {
+        "repository": "aglose/apksim",
+        "prs": 4,
+        "percent": 0.956938
+      },
+      {
+        "repository": "elsa-workflows/elsa-core",
+        "prs": 4,
+        "percent": 0.956938
+      },
+      {
+        "repository": "hankehly/power-market-analytics",
+        "prs": 4,
+        "percent": 0.956938
+      },
+      {
+        "repository": "vanillagreencom/vsys",
+        "prs": 4,
+        "percent": 0.956938
+      },
+      {
+        "repository": "wolfware-labs/mora-lang",
+        "prs": 4,
+        "percent": 0.956938
+      },
+      {
+        "repository": "dennispayne/astrostack-downloader",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "elsa-workflows/elsa-foundation",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "eruvalca/nova",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "flexpair/mumbling-mole",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "godaddy/antares",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "hacker-cb/claude-code-plugins",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "maba-pag/owlbear",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "mrploch/ploch-commandline",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "scaryrawr/scarypilot",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "spiceai/docs",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "spineeventengine/config",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "spudly/eciperay",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "srz-zumix/go-gh-extension",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "zaffnet/whetstone",
+        "prs": 3,
+        "percent": 0.717703
+      },
+      {
+        "repository": "abradner/hoist",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "aetos382/devcontainer-features",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "akhiakl/svgin-react",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "basecamp/hey-cli",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "bingblop/adb-application-manager",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "cbattlegear/meshcoreone-android",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "daiksud/agents",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "dfinity/governance-app",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "dfinity/nns-dapp",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "dherault/strategydance",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "edenhaus/lotse",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "elsa-workflows/elsa-blog",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "jethome-iot/jethome-dev",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "kyverno/kyverno",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "lindayi/hermes-mobile",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "msxorg/docs",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "nicosandller/easy-floorplan",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "phrocker/shoal-oss",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "rajbos/ai-engineering-fluency",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "sikebe/ghpmv",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "songmu/slidown",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "tinkerologie/ha-unifi-insights",
+        "prs": 2,
+        "percent": 0.478469
+      },
+      {
+        "repository": "achi1984/meridian",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "aeirola/react-native-svg-app-icon",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "antigenomics/mhcmatch",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "apollosproject/bug-board",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "askpt/code-metrics",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "barrettclark/sqlite2pg",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "basecamp/hey-sdk",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "basecamp/lexxy",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "bcinarli/pane-peek",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "bezoar/pdf2epub",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "bloquo-inc/.github",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "cwtch-consulting/tocyn",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "cyberticalai/.github",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "domblack/git-stack",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "dorssel/dotnet-debounce",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "drluckyspin/go-remote",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "elsa-workflows/elsa-extensions",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "elsa-workflows/elsa-studio",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "eruvalca/yhab",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "fffergal/armstrongthanksgiving",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "fingerprintjs/flow-cloudflare-worker",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "flintstrike-nz/cinnabarr",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "fupacat/girdle",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "glyad/shell-web-components-governance",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "havit/havit.blazor",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "hoshinosuzumi/chronoframe",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "iroha71/mementolane-app",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "jdgarciauc3m/wg21-papers",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "jethome-iot/esphome-device-configs",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "jewelsjlf/whx",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "joelst/flint",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "jsnjack/wakeci",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "kosnu/savings",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "kyverno/website",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "ladybluenotes/grandtheftrepo",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "lmorchard/wideboi",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "lowlydba/lowlydba.sqlserver",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "msxorg/.github",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "mtransitapps/commons-android",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "nise-nabe/armeria-intellij-plugin",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "obnoxxx/python-collectionbox",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "opencost/opencost",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "pgrudzien12/openhornedrat",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "pimcore/pimcore",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "pimcore/studio-ui-bundle",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "qautomateoy/qualweb",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "rafaelkallis/litellm-as-code",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "romanr92/adaptive-pi",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "scarver2/howdy-world",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "sourceblender/musubi",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "spiceai/datafusion",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "spiceai/datafusion-federation",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "spiceai/datafusion-table-providers",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "spiceai/llama.cpp",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "spiceai/spice-dotnet",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "spiceai/spice-java",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "staffbase/gq",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "starknet-innovation/ethereum-cctp-strk20",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "stepankuzmin/skills",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "stgerman/nat20",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "tabler/tabler",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "the-pr-agent/pr-agent",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "tipee-sa/alfred",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "ulfiac/aws-bootstrap",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "ulfiac/containers",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "ulfiac/infra",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "upu/yamoru",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "vincentk/dedekind",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "wdaz/ai-native-personal-finance",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "wolfware-labs/pavia",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "xedahq/xeda",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "xxvampiricshadowxx/bsky-news-feed-bot",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "zhfans/dotagents",
+        "prs": 1,
+        "percent": 0.239234
+      },
+      {
+        "repository": "zhfans/ragged-batch",
+        "prs": 1,
+        "percent": 0.239234
+      }
+    ]
+  },
+  "formal_merged_overlap_with_text_cohort": 418,
+  "first_qualifying_formal_approval_utc": "2026-09-03T16:39:15+00:00",
+  "by_text_assessment": {
+    "ready": {
+      "numerator": 13974,
+      "denominator": 21503,
+      "percent": 64.986281
+    },
+    "not_ready": {
+      "numerator": 16088,
+      "denominator": 22648,
+      "percent": 71.03497
+    },
+    "uncertain": {
+      "numerator": 10640,
+      "denominator": 15608,
+      "percent": 68.170169
+    }
+  },
+  "interpretation": [
+    "User-account approval means a currently APPROVED non-Copilot review by a GitHub User account, submitted within PR lifetime and by merge.",
+    "User approvals are not restricted to the Copilot assessment study window, matching the paper definition.",
+    "Absent current approval records do not establish absence of human inspection or earlier dismissed approvals.",
+    "The full merged-text baseline includes overlapping formally approved PRs. The nonformal baseline excludes them.",
+    "These are descriptive baselines within the Copilot-reviewed input frame, not controls drawn from all GitHub PRs.",
+    "Shared-repository and overlapping-period subsets remain unadjusted for PR composition and repository rules.",
+    "Checkpoint review states are measured at collection time; outcomes use the frozen PR snapshots."
+  ],
+  "verified_original_formal_approval_counts": {
+    "prs_with_copilot_approval_before_terminal": 429,
+    "merged": 418,
+    "merged_bot_authored": 43,
+    "merged_without_current_user_approval_by_merge": 389,
+    "merged_with_comparable_last_approval_sha": 418,
+    "merged_last_approval_sha_matches_saved_head": 410,
+    "open": 7,
+    "closed": 4
+  },
+  "verified_text_cohort_prs": 69801,
+  "checkpoint_status": {
+    "complete": 76113,
+    "unavailable": 3181,
+    "error": 2
+  },
+  "saved_analysis_sha256": "855a833ee7b022ddb21613e5a64911391a235f4d0ef4325b6ebc71bf35618431",
+  "audit_time_utc": "2026-11-14T15:49:45.313393+00:00"
+}

@@ -1,8 +1,9 @@
 cff-version: 1.2.0
 message: "Please cite the accompanying paper when using this research artifact."
-title: "Formal Copilot Approvals and Merges without Current User Approval Records"
+title: "Copilot Review Assessments, Approval Records, and Pull Request Merges"
 type: software
 authors:
   - family-names: Hasanov
     given-names: Ogtay
 abstract: "Code, frozen inputs, validation evidence, and saved results for a study of GitHub Copilot review assessments and pull-request outcomes."
+

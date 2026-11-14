@@ -159,7 +159,80 @@ def markdown(title, headers, rows):
                       "|" + "---|" * len(headers), *("| " + " | ".join(str(c) for c in row) + " |" for row in rows), ""])
 
 
-def render(result, audit, probe, repository_url=None):
+def validate_context(context, result, result_sha256):
+    if context['saved_analysis_sha256'] != result_sha256:
+        raise ValueError('Approval context belongs to a different saved analysis')
+    if context['verified_text_cohort_prs'] != result['outcomes']['ALL']['prs']:
+        raise ValueError('Approval context text cohort differs from the paper')
+    if context['checkpoint_status'] != result['status'] or context['verified_original_formal_approval_counts'] != result['formal_approvals']:
+        raise ValueError('Approval context checkpoint/formal counts differ from the paper')
+    rates = context['baseline_no_current_user_approval_by_merge']
+    for value in rates.values():
+        n, d = integer(value['numerator'], 'context numerator'), integer(value['denominator'], 'context denominator')
+        if n > d or (d and abs(value['percent'] - 100*n/d) > .00001):
+            raise ValueError('Inconsistent approval-context fraction')
+    full = rates['merged_text_cohort']
+    other = rates['merged_text_cohort_without_formal_copilot_approval']
+    formal = rates['formal_copilot_merged_cohort']
+    if full['denominator'] != result['outcomes']['ALL']['merged'] or formal != {
+            'numerator': result['formal_approvals']['merged_without_current_user_approval_by_merge'],
+            'denominator': result['formal_approvals']['merged'], 'percent': formal['percent']}:
+        raise ValueError('Approval-context denominators disagree with the paper')
+    if context['formal_merged_overlap_with_text_cohort'] != formal['denominator']:
+        raise ValueError('This context table requires all formal merged PRs to overlap the text cohort')
+    if full['denominator'] - other['denominator'] != formal['denominator'] or full['numerator'] - other['numerator'] != formal['numerator']:
+        raise ValueError('Formal/nonformal approval-context partitions disagree')
+    shared = rates['nonformal_text_merges_in_formal_cohort_repositories']
+    restricted = rates['same_repositories_and_merged_on_or_after_first_formal_approval']
+    if not restricted['denominator'] <= shared['denominator'] <= other['denominator']:
+        raise ValueError('Invalid repository/time subset sizes')
+    for key, total in [('formal_approval_repository_concentration', result['formal_approvals']['prs_with_copilot_approval_before_terminal']),
+                       ('merged_formal_approval_repository_concentration', formal['denominator'])]:
+        c = context[key]
+        entries = c['per_repository']
+        if c['prs'] != total or len(entries) != c['repositories'] or len({r['repository'] for r in entries}) != len(entries) or sum(r['prs'] for r in entries) != total:
+            raise ValueError('Inconsistent repository-concentration totals')
+        for k in (1, 5, 10):
+            v = c['top_' + str(k)]
+            if v['denominator'] != total or v['numerator'] != sum(sorted((r['prs'] for r in entries), reverse=True)[:k]):
+                raise ValueError('Inconsistent top-repository share')
+    for field in ('numerator', 'denominator'):
+        if sum(v[field] for v in context['by_text_assessment'].values()) != full[field]:
+            raise ValueError('Assessment-specific approval counts do not sum to the full baseline')
+
+
+def render_context(context):
+    values = context['baseline_no_current_user_approval_by_merge']
+    rows = []
+    macros = {}
+    definitions = [
+        ('FormalBaseline', 'formal_copilot_merged_cohort', 'Formal Copilot approvals'),
+        ('TextBaseline', 'merged_text_cohort', 'All merged text-assessment PRs'),
+        ('NonformalBaseline', 'merged_text_cohort_without_formal_copilot_approval', 'Text-assessment PRs without formal Copilot approval'),
+        ('SharedBaseline', 'nonformal_text_merges_in_formal_cohort_repositories', 'Nonformal comparison PRs in formal-cohort repositories'),
+        ('PeriodBaseline', 'same_repositories_and_merged_on_or_after_first_formal_approval', 'Same repositories, merged on/after first formal approval')]
+    for prefix, key, title in definitions:
+        v = values[key]
+        n, d = v['numerator'], v['denominator']
+        rows.append((title, ratio(n, d), percent(n, d)))
+        macros[prefix + 'Count'] = number(n)
+        macros[prefix + 'PRs'] = number(d)
+        macros[prefix + 'Rate'] = latex(percent(n, d))
+    for prefix, key in [('FormalRepo', 'formal_approval_repository_concentration'), ('MergedFormalRepo', 'merged_formal_approval_repository_concentration')]:
+        c = context[key]
+        macros[prefix + 'Count'] = number(c['repositories'])
+        for k, label in [(1, 'One'), (5, 'Five'), (10, 'Ten')]:
+            v = c['top_' + str(k)]
+            macros[prefix + 'Top' + label + 'PRs'] = number(v['numerator'])
+            macros[prefix + 'Top' + label + 'Rate'] = latex(percent(v['numerator'], v['denominator']))
+    date = stamp(context['first_qualifying_formal_approval_utc'])
+    macros['FirstFormalDate'] = str(date.day) + date.strftime(' %B %Y')
+    text = '\n'.join(r'\newcommand{' + '\\' + k + '}{' + v + '}' for k, v in macros.items()) + '\n'
+    caption = 'Current user-account approval records among merged PRs. Each row counts PRs without a qualifying user-account approval by merge. Repository-restricted rows exclude formal Copilot approvals and use repositories represented in the full formal-approval cohort.'
+    return text, table(caption, 'tab:approval-context', ['Merged PR group', 'Count', 'Share'], rows, True), markdown('Table 3. Approval-record context', ['Merged PR group', 'Count', 'Share'], rows)
+
+
+def render(result, audit, probe, repository_url=None, context=None):
     c, o, f, a = result["counts"], result["outcomes"], result["formal_approvals"], audit["counts"]
     def frac(n, d): return ratio(n, d), percent(n, d)
     formal = [
@@ -203,6 +276,7 @@ def render(result, audit, probe, repository_url=None):
         "ProbeControlsTested": probe["positive_control_tested"], "ProbeControlsFound": probe["positive_control_found"]}
     macros = {k: number(v) for k, v in raw.items()}
     rates = {
+        "ReadyMatchRate": (o['ready']['matching_heads'], o['ready']['comparable_merged']),
         "CoverageRate": (c["review_lists_complete"], c["input_prs"]),
         "ReadyMergeRate": (o["ready"]["merged"], o["ready"]["prs"]),
         "ChangesMergeRate": (o["not_ready"]["merged"], o["not_ready"]["prs"]),
@@ -230,10 +304,16 @@ def render(result, audit, probe, repository_url=None):
     rendered["formal_table.tex"] = table("Formal Copilot approvals. The merged rate uses all qualifying formal-approval PRs. The remaining rows describe the merged subset.", "tab:formal", ["Measure", "Count", "Share"], formal, True)
     rendered["outcome_table.tex"] = table("Outcomes by last qualifying text assessment. Merge rates use every PR in the group. Head-match rates use comparable merged PRs.", "tab:outcomes", ["Assessment", "PRs", "Merged", "Matching heads among merges"], outcome)
     rendered["archive_table.tex"] = table("Validation of the frozen export. Review-level and PR-level denominators are stated separately.", "tab:audit", ["Measure", "Count", "Share"], audit_rows, True)
+    context_markdown = ''
+    if context is not None:
+        extra_macros, context_table, context_markdown = render_context(context)
+        rendered['results_macros.tex'] += extra_macros
+        rendered['approval_context_table.tex'] = context_table
     rendered["tables.md"] = "\n".join([
-        markdown("Table 1. Formal approvals", ["Measure", "Count", "Share"], formal),
-        markdown("Table 2. Text assessments", ["Assessment", "PRs", "Merged", "Matching heads among merges"], outcome),
-        markdown("Table 3. Archive audit", ["Measure", "Count", "Share"], audit_rows)])
+        markdown("Table 1. Text assessments", ["Assessment", "PRs", "Merged", "Matching heads among merges"], outcome),
+        markdown("Table 2. Formal approvals", ["Measure", "Count", "Share"], formal),
+        context_markdown,
+        markdown("Table 4. Archive audit" if context is not None else "Table 3. Archive audit", ["Measure", "Count", "Share"], audit_rows)])
     return rendered
 
 
@@ -270,6 +350,7 @@ def main():
     p.add_argument("--probe-targets", type=Path, default=home/"data/probe_targets.csv")
     p.add_argument("--out-dir", type=Path, default=home/"paper/generated")
     p.add_argument("--repository-url")
+    p.add_argument("--approval-context", type=Path, default=home/'data/approval_context_results.json')
     p.add_argument("--summary-preview", action="store_true")
     args = p.parse_args()
     try:
@@ -279,10 +360,16 @@ def main():
         if result['counts']['input_prs'] != audit['population']:
             raise ValueError("Result and validation audit describe different input-frame sizes")
         probe = read_probe(args.probe, args.probe_targets)
-        outputs = render(result, audit, probe, args.repository_url)
+        result_hash = hashlib.sha256(args.results.read_bytes()).hexdigest()
+        context = json.loads(args.approval_context.read_text(encoding='utf-8-sig'))
+        validate_context(context, result, result_hash)
+        outputs = render(result, audit, probe, args.repository_url, context)
         manifest = {**verified, "result_file": args.results.name,
                     "result_sha256": hashlib.sha256(args.results.read_bytes()).hexdigest(),
-                    "repository_url": args.repository_url, "tables": ["formal_table.tex", "outcome_table.tex", "archive_table.tex"],
+                    "repository_url": args.repository_url, "tables": ["outcome_table.tex", "formal_table.tex", "approval_context_table.tex", "archive_table.tex"],
+                    "approval_context_file": args.approval_context.name,
+                    "approval_context_sha256": hashlib.sha256(args.approval_context.read_bytes()).hexdigest(),
+                    "approval_context_validation": "saved-analysis hash, supplied checkpoint/formal counts, cohort partitions, and repository aggregates; raw reviews remain in the local checkpoint",
                     "formal_approval_validation": "aggregate constraints; approval-level records are in the native-review checkpoint"}
         outputs["build_manifest.json"] = json.dumps(manifest, indent=2) + "\n"
         args.out_dir.parent.mkdir(parents=True, exist_ok=True)
@@ -303,3 +390,4 @@ def main():
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

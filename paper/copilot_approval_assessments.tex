@@ -4,7 +4,7 @@
 \usepackage[margin=0.85in]{geometry}
 \usepackage{booktabs,array,graphicx,placeins,float}
 \usepackage[hidelinks]{hyperref}
-\hypersetup{pdftitle={Copilot Review Assessments, Approval Records, and Pull Request Merges},
+\hypersetup{pdftitle={Copilot Review Verdicts, Approval Records, and Pull Request Merges},
 pdfauthor={Ogtay Hasanov}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{4pt plus 1pt}
@@ -12,7 +12,7 @@ pdfauthor={Ogtay Hasanov}}
 \widowpenalty=10000
 \clubpenalty=10000
 \input{generated/results_macros.tex}
-\title{Copilot Review Assessments, Approval Records, and Pull Request Merges}
+\title{Copilot Review Verdicts, Approval Records, and Pull Request Merges}
 \author{Ogtay Hasanov}
 \date{14 November 2026}
 \begin{document}
@@ -23,10 +23,9 @@ Since September 2026, GitHub Copilot can end a code review with a verdict:
 recommend approval, recommend changes, or take a closer look. We examine
 what happens to pull requests (PRs) after each verdict. We obtained
 complete review lists for \CompleteLists{} public PRs. The verdict
-analysis includes \OutcomePRs{} of them. After a changes verdict, some
-merged PRs had matching reviewed and saved commits
-(\ChangesMatchRate{} of cases with comparable commit records). After an
-approval verdict, that share was \ReadyMatchRate{}. PRs merged less
+analysis includes \OutcomePRs{} of them. After a changes verdict, the saved PR commit matched the reviewed
+commit in \ChangesMatchRate{} of merged PRs with usable commit records.
+After an approval verdict, that share was \ReadyMatchRate{}. PRs merged less
 often after a changes verdict (\ChangesMergeRate{}). After an approval
 verdict, the merge rate was \ReadyMergeRate{}. Copilot also issued
 formal approvals, but these were rare (\FormalPRs{} PRs). They occurred
@@ -55,9 +54,9 @@ may arrive before the merge or after it. We link Copilot's review
 records to saved PR outcomes and compare the reviewed commit with the
 saved commit. Section~3 defines these records and the selection rules.
 
-Some PRs merged after a changes verdict had matching reviewed and saved
-commits (\ChangesMatchRate{}). Matching commits were more common after
-an approval verdict (\ReadyMatchRate{}). Most PRs in both groups merged.
+After a changes verdict, the saved PR commit matched the reviewed
+commit in \ChangesMatchRate{} of merged PRs with usable commit records.
+After an approval verdict, that share was \ReadyMatchRate{}. Most PRs in both groups merged.
 We report their merge rates alongside the commit comparisons and check
 how the rates change when open PRs are excluded.
 
@@ -257,10 +256,11 @@ for the combined tables.
 
 \subsection{Merges after changes verdicts}
 
-Some PRs merged after a changes verdict had matching reviewed and saved
-commits (\ChangesMatchRate{}). Most had a different saved commit
-(\ChangesMismatchRate{}). Matching commits were more common after an
-approval verdict (\ReadyMatchRate{}). Across all verdict groups, the
+After a changes verdict, the saved PR commit matched the reviewed
+commit in \ChangesMatchRate{} of merged PRs with usable commit records.
+After an approval verdict, that share was \ReadyMatchRate{}.
+Most merged PRs in the changes group had a different saved commit
+(\ChangesMismatchRate{}). Across all verdict groups, the
 reviewed and saved commits matched in \OverallMatchRate{} of comparable
 merges. Table~\ref{tab:outcomes} gives the counts and denominators.
 
@@ -415,26 +415,25 @@ reviewed commit may also remain an ancestor of the saved commit.
 
 \section{Conclusion}
 
-In the changes-recommendation group, \ChangesMatches{} of
-\ChangesComparable{} comparable merges (\ChangesMatchRate{}) had the
-same saved commit as the selected reviewed commit, compared with
-\ReadyMatchRate{} after approval recommendations. Across the
-\OutcomePRs{}-PR verdict cohort, merge rates differed by
-\MergeGapPP{} percentage points between approval and changes
-recommendations. 
+The reviewed and saved commits matched less often after changes verdicts.
+After a changes verdict, the saved PR commit matched the reviewed commit
+in \ChangesMatchRate{} of merged PRs with usable commit records. After an
+approval verdict, that share was \ReadyMatchRate{}. Most PRs in both
+groups merged, with a gap of \MergeGapPP{} percentage points between
+their merge rates.
 
-Of \FormalMerged{} merged PRs with a qualifying formal Copilot
-approval, \FormalNoUser{} (\FormalNoUserRate{}) had no current
-user-account approval record dated by merge. The corresponding rate
-was \SharedBaselineRate{} among nonformal comparison merges in the
-same formal-cohort repositories. The \FormalPRs{} formal-approval PRs
-spanned \FormalRepoCount{} repositories, with \FormalRepoTopFiveRate{}
-from the top five. These rates require repository context.
+Formal approvals need repository context. Most merged PRs with a formal
+Copilot approval had no current user-account approval recorded by merge
+(\FormalNoUserRate{}). The comparison share in those repositories was
+\SharedBaselineRate{}. Formal approvals were spread across many
+repositories, but the top five contributed \FormalRepoTopFiveRate{}
+of the cases.
 
-Separately, \PostMergeRate{} of merged PRs with a current qualifying
-review had every such review submitted after merge. The archive audit
-changed the selected group on \AuditGroupChangeRate{} of linked
-sampled PRs after missing reviews were added. Complete review histories and repository context are central to interpreting these outcomes.
+Some PRs received all their qualifying verdicts after merge
+(\PostMergeRate{}). Adding reviews missing from the archive export
+changed the assigned verdict for \AuditGroupChangeRate{} of sampled PRs
+with saved outcomes. Review timing, repository context, and complete
+histories are central to interpreting these outcomes.
 
 \section{Reproducibility and AI assistance}
 

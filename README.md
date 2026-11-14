@@ -1,6 +1,6 @@
-# Copilot review assessments and pull-request outcomes
+# Copilot review verdicts and pull-request outcomes
 
-Research artifact for **Copilot Review Assessments, Approval Records, and Pull Request Merges**, by Ogtay Hasanov.
+Research artifact for **Copilot Review Verdicts, Approval Records, and Pull Request Merges**, by Ogtay Hasanov.
 
 This package reproduces the paper's tables, figure, and result macros from the saved native API analysis and approval-context audit outputs. It includes the paper PDF and LaTeX source, frozen input files, validation evidence, and review-collection and analysis code.
 

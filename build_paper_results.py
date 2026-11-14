@@ -207,9 +207,9 @@ def render_context(context):
     macros = {}
     definitions = [
         ('FormalBaseline', 'formal_copilot_merged_cohort', 'Formal Copilot approvals'),
-        ('TextBaseline', 'merged_text_cohort', 'All merged text-assessment PRs'),
-        ('NonformalBaseline', 'merged_text_cohort_without_formal_copilot_approval', 'Text-assessment PRs without formal Copilot approval'),
-        ('SharedBaseline', 'nonformal_text_merges_in_formal_cohort_repositories', 'Nonformal comparison PRs in formal-cohort repositories'),
+        ('TextBaseline', 'merged_text_cohort', 'All merged PRs with a verdict'),
+        ('NonformalBaseline', 'merged_text_cohort_without_formal_copilot_approval', 'PRs without formal Copilot approval'),
+        ('SharedBaseline', 'nonformal_text_merges_in_formal_cohort_repositories', 'Comparison PRs in repositories with formal approvals'),
         ('PeriodBaseline', 'same_repositories_and_merged_on_or_after_first_formal_approval', 'Same repositories, merged on/after first formal approval')]
     for prefix, key, title in definitions:
         v = values[key]
@@ -228,7 +228,7 @@ def render_context(context):
     date = stamp(context['first_qualifying_formal_approval_utc'])
     macros['FirstFormalDate'] = str(date.day) + date.strftime(' %B %Y')
     text = '\n'.join(r'\newcommand{' + '\\' + k + '}{' + v + '}' for k, v in macros.items()) + '\n'
-    caption = 'Current user-account approval records among merged PRs. Each row counts PRs without a qualifying user-account approval by merge. Repository-restricted rows exclude formal Copilot approvals and use repositories represented in the full formal-approval cohort.'
+    caption = 'Merged PRs with no current user-account approval recorded by merge. The last two rows exclude formal Copilot approvals and use repositories represented in the full formal approval group.'
     return text, table(caption, 'tab:approval-context', ['Merged PR group', 'Count', 'Share'], rows, True), markdown('Table 3. Approval-record context', ['Merged PR group', 'Count', 'Share'], rows)
 
 
@@ -239,7 +239,7 @@ def render(result, audit, probe, repository_url=None, context=None, heading_audi
         ("Recorded as merged", *frac(f["merged"], f["prs_with_copilot_approval_before_terminal"])),
         ("Merged with no current user-account approval record dated by merge", *frac(f["merged_without_current_user_approval_by_merge"], f["merged"])),
         ("Merged PR authored by an account classified as a bot", *frac(f["merged_bot_authored"], f["merged"])),
-        ("Last formal-approval SHA matched the saved head", *frac(f["merged_last_approval_sha_matches_saved_head"], f["merged_with_comparable_last_approval_sha"]))]
+        ("Last formally approved commit matched the saved commit", *frac(f["merged_last_approval_sha_matches_saved_head"], f["merged_with_comparable_last_approval_sha"]))]
     outcome = [(NAMES.get(k, "All"), number(o[k]["prs"]),
                 number(o[k]["merged"]) + " (" + percent(o[k]["merged"], o[k]["prs"]) + ")",
                 ratio(o[k]["matching_heads"], o[k]["comparable_merged"]) + " (" + percent(o[k]["matching_heads"], o[k]["comparable_merged"]) + ")")
@@ -315,9 +315,9 @@ def render(result, audit, probe, repository_url=None, context=None, heading_audi
         raise ValueError("Supply the GitHub repository root URL, https://github.com/owner/repository")
     macros["RepositoryLink"] = (r"\par Replication repository: \url{" + repository_url.rstrip("/") + "}." if repository_url else "")
     rendered = {"results_macros.tex": "\n".join(r"\newcommand{" + "\\" + k + "}{" + v + "}" for k, v in macros.items()) + "\n"}
-    rendered["formal_table.tex"] = table("Formal Copilot approvals. The merged rate uses all qualifying formal-approval PRs. The remaining rows describe the merged subset.", "tab:formal", ["Measure", "Count", "Share"], formal, True)
-    rendered["outcome_table.tex"] = table("Outcomes by last qualifying text assessment. Merge rates use every PR in the group. Head-match rates use comparable merged PRs.", "tab:outcomes", ["Assessment", "PRs", "Merged", "Matching heads among merges"], outcome)
-    rendered["archive_table.tex"] = table("Validation of the frozen export. Review-level and PR-level denominators are stated separately.", "tab:audit", ["Measure", "Count", "Share"], audit_rows, True)
+    rendered["formal_table.tex"] = table("Formal Copilot approvals. The first row uses all PRs with a qualifying formal approval. Other rows use the merged cases.", "tab:formal", ["Measure", "Count", "Share"], formal, True)
+    rendered["outcome_table.tex"] = table("Outcomes by last qualifying verdict. Merge rates count every PR in a group. Commit-match rates count merged PRs with comparable commit records.", "tab:outcomes", ["Verdict", "PRs", "Merged", "Matching commits among merges"], outcome)
+    rendered["archive_table.tex"] = table("Reviews missing from the frozen archive export in the validation sample. Each row states its denominator.", "tab:audit", ["Measure", "Count", "Share"], audit_rows, True)
     context_markdown = ''
     if context is not None:
         extra_macros, context_table, context_markdown = render_context(context)
@@ -326,7 +326,7 @@ def render(result, audit, probe, repository_url=None, context=None, heading_audi
     if heading_audit is not None:
         rendered['formal_heading_audit.json'] = json.dumps(heading_audit, indent=2) + '\n'
     rendered["tables.md"] = "\n".join([
-        markdown("Table 1. Text assessments", ["Assessment", "PRs", "Merged", "Matching heads among merges"], outcome),
+        markdown("Table 1. Verdicts", ["Verdict", "PRs", "Merged", "Matching commits among merges"], outcome),
         markdown("Table 2. Formal approvals", ["Measure", "Count", "Share"], formal),
         context_markdown,
         markdown("Table 4. Archive audit" if context is not None else "Table 3. Archive audit", ["Measure", "Count", "Share"], audit_rows)])
@@ -346,7 +346,7 @@ def figure(result, path):
     match = [100*o[k]["matching_heads"]/o[k]["prs"] for k in GROUPS]
     fig, ax = plt.subplots(figsize=(7.6, 3.5))
     a = ax.bar([i-.18 for i in x], merged, .36, color="#444444", label="Merged")
-    b = ax.bar([i+.18 for i in x], match, .36, color="#bbbbbb", edgecolor="#777777", linewidth=.6, label="Merged with matching head")
+    b = ax.bar([i+.18 for i in x], match, .36, color="#bbbbbb", edgecolor="#777777", linewidth=.6, label="Merged with matching commits")
     ax.set_ylim(0, 105); ax.set_yticks(range(0, 101, 20))
     ax.set_ylabel("Share of all PRs in the group (%)")
     ax.set_xticks(x, [f"{NAMES[k]}\n(n = {o[k]['prs']:,})" for k in GROUPS])

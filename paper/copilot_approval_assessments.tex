@@ -7,7 +7,7 @@
 \hypersetup{pdftitle={Copilot Review Assessments, Approval Records, and Pull Request Merges},
 pdfauthor={Ogtay Hasanov}}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{5pt plus 1pt}
+\setlength{\parskip}{4pt plus 1pt}
 \setlength{\emergencystretch}{2em}
 \widowpenalty=10000
 \clubpenalty=10000
@@ -19,89 +19,60 @@ pdfauthor={Ogtay Hasanov}}
 \maketitle
 
 \begin{abstract}
-GitHub Copilot can recommend changes or approval in review text and can
-issue formal approvals. We study how these records relate to pull request
-(PR) merges, user-account approval records, and commit identity. We
-extracted an input frame of \FrameCount{} PRs from GH Archive and obtained
-complete API review lists for \CompleteLists{} (\CoverageRate{}). Among
-comparable merged PRs whose last qualifying text assessment recommended
-changes, \ChangesMatches{} of \ChangesComparable{} (\ChangesMatchRate{})
-had the same saved-head SHA as the selected reviewed commit, compared
-with \ReadyMatchRate{} after approval recommendations. In the
-\OutcomePRs{}-PR text-assessment cohort, merge rates were
-\ReadyMergeRate{} after approval recommendations and \ChangesMergeRate{}
-after changes recommendations. Of \FormalMerged{} merged PRs with a
-qualifying formal Copilot approval, \FormalNoUser{} (\FormalNoUserRate{})
-had no current user-account approval record dated by merge. The
-corresponding rate was \SharedBaselineRate{} among
-\SharedBaselinePRs{} nonformal comparison merges in the same
-formal-cohort repositories, and \TextBaselineRate{} across all
-\TextBaselinePRs{} merged text-cohort PRs. The \FormalPRs{} formal-approval
-PRs spanned \FormalRepoCount{} repositories; the top five contributed
-\FormalRepoTopFiveRate{}. For \PostMergeCount{} of
-\PostMergeDenominator{} merged PRs with a current qualifying review
-(\PostMergeRate{}), every such review was submitted after merge. A
-validation audit found \AuditMissingReviewRate{} of qualifying API
-review IDs absent from the frozen export and changed the selected group
-on \AuditGroupChangeRate{} of linked sampled PRs. A raw-archive probe
-found none of \ProbeMissingTested{} sampled missing IDs and all
-\ProbeControlsTested{} controls. These descriptive results concern
-review records and commit identity; they do not establish human
-inspection, software quality, or a causal effect of Copilot.
+Since September 2026, GitHub Copilot can end a code review with a verdict:
+recommend approval, recommend changes, or take a closer look. We examine
+what happens to pull requests (PRs) after each verdict. We obtained
+complete review lists for \CompleteLists{} public PRs. The verdict
+analysis includes \OutcomePRs{} of them. After a changes verdict, some
+merged PRs had matching reviewed and saved commits
+(\ChangesMatchRate{} of cases with comparable commit records). After an
+approval verdict, that share was \ReadyMatchRate{}. PRs merged less
+often after a changes verdict (\ChangesMergeRate{}). After an approval
+verdict, the merge rate was \ReadyMergeRate{}. Copilot also issued
+formal approvals, but these were rare (\FormalPRs{} PRs). They occurred
+in repositories where user-account approvals were already uncommon.
+In a random validation sample, our GH Archive export lacked
+\AuditMissingReviewRate{} of qualifying Copilot review records. Adding
+missing reviews changed the assigned verdict for \AuditGroupChangeRate{}
+of sampled PRs with saved outcomes. Our results describe review records
+and commit identity. They do not measure code quality.
+
 \end{abstract}
 
 \section{Introduction}
 
-GitHub introduced approval assessments in Copilot code review on
-1 September 2026 \cite{github_assessments}. The review text can recommend
-approval, recommend changes, or ask for a closer look. Repositories can
-separately enable formal Copilot approvals that count toward
-required-approval rules \cite{github_assessments,github_approvals}.
+Code review helps developers decide what to change and when a pull
+request is ready to merge. Copilot adds an overall verdict to this
+process: recommend approval, recommend changes, or take a closer look.
+GitHub introduced these verdicts in September 2026
+\cite{github_assessments}. Copilot can also issue a formal approval that
+counts toward a repository's approval rules \cite{github_approvals}.
+The text verdict and formal approval are separate records.
 
-The central text-assessment observation is that \ChangesMatches{} of
-\ChangesComparable{} comparable merged PRs after changes recommendations
-(\ChangesMatchRate{}) had the same saved-head SHA as the selected
-reviewed commit. After approval recommendations, the corresponding rate
-was \ReadyMatchRate{}. This comparison describes commit identity and
-assessment groups; it does not determine which review findings were
-addressed or whether Copilot caused an edit.
+We examine how these records relate to what happens to a PR. A changes
+verdict may be followed by revisions, closure, or a merge. An approval
+may arrive before the merge or after it. We link Copilot's review
+records to saved PR outcomes and compare the reviewed commit with the
+saved commit. Section~3 defines these records and the selection rules.
 
-Separately, of \FormalMerged{} merged PRs with a qualifying formal
-Copilot approval, \FormalNoUser{} (\FormalNoUserRate{}) had no current
-user-account approval record dated by merge. That rate resembles the
-\SharedBaselineRate{} observed among nonformal comparison merges in
-repositories represented in the formal-approval cohort. Formal approval
-and a recommendation in review text are separate properties, so we
-analyze them under separate selection rules. We report both the broader
-approval-record baseline and repository concentration to put the formal
-approval result in context.
+Some PRs merged after a changes verdict had matching reviewed and saved
+commits (\ChangesMatchRate{}). Matching commits were more common after
+an approval verdict (\ReadyMatchRate{}). Most PRs in both groups merged.
+We report their merge rates alongside the commit comparisons and check
+how the rates change when open PRs are excluded.
 
-We use the term \emph{user-account approval} for a non-Copilot review
-whose current state is \texttt{APPROVED}, made by an account GitHub
-classifies as \texttt{User}. An absent record does not establish that
-no person inspected or previously approved the PR. The \emph{reviewed SHA}
-is the commit ID associated with the selected review. The \emph{saved
-head} is the commit ID recorded in our frozen PR snapshot. Equal SHAs
-identify the same commit; they do not reconstruct every intermediate
-commit or establish the historical head at merge across all cases.
+Formal approvals need repository context. Most merged PRs with a formal
+Copilot approval had no user-account approval recorded by merge
+(\FormalNoUserRate{}). The same was true for comparison PRs in those
+repositories (\SharedBaselineRate{}). We therefore report the formal
+approval result together with its comparison groups and repository
+concentration.
 
-The collection attempted every PR in the original roster and obtained
-complete review lists for \CompleteLists{} of \FrameCount{} PRs.
-The text-assessment outcome tables contain \OutcomePRs{} PRs.
-Merge rates were \ReadyMergeRate{} after approval recommendations and
-\ChangesMergeRate{} after changes recommendations, a difference of
-\MergeGapPP{} percentage points. Separately, \PostMergeRate{} of merged
-PRs with a current qualifying review had every such review submitted
-after merge.
-
-Review-history completeness is a measurement concern in this analysis.
-In a random validation sample, adding reviews absent from the frozen
-export changed the selected group on \AuditGroupChangeRate{} of PRs
-with saved outcomes. A raw-archive query found \ProbeMissingFound{} of
-\ProbeMissingTested{} sampled missing IDs and \ProbeControlsFound{} of
-\ProbeControlsTested{} known-present controls. We therefore use native
-API histories for the outcome tables and retain the archive audit as
-a method warning.
+The review source also changes the result. In a random validation
+sample, adding reviews missing from our archive export changed the
+assigned verdict on \AuditGroupChangeRate{} of PRs with saved outcomes.
+We use API review histories for the outcome analysis and report the
+archive check so that the effect of missing reviews is visible.
 
 \section{Related work}
 
@@ -112,12 +83,12 @@ examine developer responses to review comments from coding agents
 by AI agents using agent-attributed GitHub events
 \cite{selvanayagam2026}. These studies focus on comments, their resolution,
 or the agents on each side of a review. Our unit is Copilot's overall
-assessment of a PR, linked to its review history, saved head, and outcome.
+verdict of a PR, linked to its review history, saved commit, and outcome.
 
 Manji examines the provenance of formal approvals in one company's merge
 workflow \cite{manji2026}. That work also shows why an account recorded as
 a user can carry automated activity. We use GitHub's account types as
-recorded metadata. Formal approvals and assessment headings are separate
+recorded metadata. Formal approvals and verdict headings are separate
 properties in our analysis.
 
 \section{Data and measures}
@@ -141,7 +112,7 @@ matched GitHub's native review submission time.
 
 We linked 76,217 input PRs to usable GitHub GraphQL snapshots
 \cite{github_graphql}. These recorded PR state, opening and terminal
-times, head SHA, and account types. The initial collection supplied
+times, PR commit identifier, and account types. The initial collection supplied
 35,747 snapshots, and recovery completed on 10 November 2026 added
 40,470. We retain these frozen outcomes when analyzing the review lists
 retrieved later.
@@ -153,17 +124,17 @@ roster, using seed 20261112. We fetched their review lists through the
 GitHub REST API and followed pagination \cite{github_reviews}. We resolved
 renamed repositories when possible and obtained complete lists for
 \AuditAccessible{} PRs. The other 77 were inaccessible. Two accessible PRs lacked
-a usable frozen outcome, leaving \AuditLinked{} for assessment-group comparisons.
+a usable frozen outcome, leaving \AuditLinked{} for verdict-group comparisons.
 
-The reconciliation uses the same reviewer identities, assessment
+The reconciliation uses the same reviewer identities, verdict
 headings, and UTC submission window as the frozen export. The API lists
 supplied \AuditReviewCount{} qualifying reviews. We matched records by PR and native
 review ID. For each PR, we added missing API reviews to the frozen list,
-retained its existing records, and recomputed the selected assessment
+retained its existing records, and recomputed the selected verdict
 and all-after-merge status. We also computed the selected group directly
 from the API lists. The group-change count was the same under both
 approaches. Two archived IDs were absent from the API lists, and ten
-shared records differed in their associated SHA. No shared qualifying
+shared records differed in their associated commit identifier. No shared qualifying
 review changed class. Audit proportion intervals use the Wilson method.
 
 We then sampled 50 of the 5,056 missing review IDs, using seed 20261112.
@@ -184,7 +155,7 @@ collected the remainder through the REST and GraphQL APIs on
 12--13 November 2026. The GraphQL collector requests multiple PRs in
 a batch and follows every review cursor. Before switching transports,
 a check compared four reviews on one PR across both APIs. Native review
-IDs, submission times, reviewed SHAs, states, and assessment fields matched.
+IDs, submission times, reviewed commit identifiers, states, and verdict fields matched.
 
 The completed pass obtained complete review lists for \CompleteLists{} PRs
 (\CoverageRate{} of the roster). Another \UnavailableLists{} PRs were unavailable, and \ErrorLists{} had
@@ -194,40 +165,46 @@ a complete review list and a usable state. These counts describe
 coverage of the input frame; PRs absent from that frame are outside
 the study.
 
-\subsection{Selecting assessments and computing rates}
+\subsection{Selecting verdicts and computing rates}
 
-A text assessment qualifies for outcome grouping if it has a recognized
+We call a recognized overall text recommendation a \emph{verdict}.
+The \emph{reviewed commit} is the commit identified by its review.
+The \emph{saved commit} is the PR commit recorded in the frozen outcome
+snapshot. We compare their Git commit identifiers to determine whether
+they identify the same commit.
+
+A verdict qualifies for outcome grouping if it has a recognized
 heading and a native submission time in the study window, at or after
 PR opening and, for a terminal PR, at or before merge or closure.
 We sort the reviews by submission time and select the last qualifying
-assessment. Tied timestamps with conflicting classes are excluded.
-For an open PR, selection uses the last qualifying assessment in the
+verdict. Tied timestamps with conflicting classes are excluded.
+For an open PR, selection uses the last qualifying verdict in the
 study window. This yielded \OutcomePRs{} PRs.
 
 A group's merge rate divides the number of its PRs recorded as merged
-by every PR in that group, including open and closed PRs. The head-match
-rate among merges divides equal reviewed and saved SHAs by the merged
-PRs with comparable SHAs. We exclude missing or ambiguous compared SHAs
+by every PR in that group, including open and closed PRs. The commit-match
+rate among merges divides equal reviewed and saved commit identifiers by the merged
+PRs with comparable commit identifiers. We exclude missing or ambiguous compared commit identifiers
 from this second denominator. There were \UnknownComparedSHAs{} such records among the
 \OutcomeMerged{} merged PRs in the outcome table.
 
 The timing analysis includes all \PostMergeDenominator{} linked merged PRs with a current
-qualifying review, including PRs whose assessments fall outside the
+qualifying review, including PRs whose verdicts fall outside the
 pre-merge outcome grouping. A PR is classified as assessed only after
 merge when every qualifying review has a submission time strictly later
 than the recorded merge time. Another \NoCurrentMergedReview{} linked merged PRs had no current
 qualifying review and remain unclassified for this timing rate.
 
-A formal approval state is distinct from an assessment heading. A later
+A formal approval state is distinct from a verdict heading. A later
 formal approval without a recognized heading does not supersede the last
-qualifying text assessment used in Table~\ref{tab:outcomes}. In the
+qualifying verdict used in Table~\ref{tab:outcomes}. In the
 validation sample, none of the \SampleFormalReviews{} qualifying Copilot
-approval reviews carried a recognized assessment heading. Thus a PR's
-selected text assessment can precede a later formal approval. At most
+approval reviews carried a recognized verdict heading. Thus a PR's
+selected verdict can precede a later formal approval. At most
 \FormalMerged{} merged text-cohort PRs (\FormalShareOfMergedText{}) have
 a qualifying formal Copilot approval. Even if all of them were
-different-head merges in the changes group, excluding them would raise
-that group's matching-head share only from \ChangesMatchRate{} to
+merges with different commits in the changes group, excluding them would raise
+that group's matching-commit share only from \ChangesMatchRate{} to
 \ChangesFormalBoundRate{}. This is a conservative upper bound, not an
 observed reclassification of all formal-approval PRs.
 
@@ -235,18 +212,18 @@ A formal approval is identified independently of the text heading,
 using a Copilot review whose current API state is \texttt{APPROVED},
 submitted in the study window and within the observed PR lifetime.
 For a merged PR, we consider only approvals submitted by merge. The
-formal-approval SHA comparison uses the last such approval, excluding
-ambiguous tied SHAs. A user-account approval is a returned, non-Copilot
+formal-approval commit comparison uses the last such approval, excluding
+ambiguous tied commit identifiers. A user-account approval is a returned, non-Copilot
 \texttt{APPROVED} review by an account GitHub classifies as \texttt{User},
 submitted at or after PR opening and by merge.
 
 \subsection{Approval-record baselines and repository concentration}
 
 We applied the same user-account approval definition to every merged PR
-in the text-assessment cohort. User approvals need not fall within the
-Copilot assessment study window; they must be submitted within the PR
+in the verdict cohort. User approvals need not fall within the
+Copilot verdict study window; they must be submitted within the PR
 lifetime and by the frozen merge time. All \FormalMerged{} merged
-formal-approval PRs also belong to the text-assessment cohort. We report
+formal-approval PRs also belong to the verdict cohort. We report
 the full baseline and a baseline excluding these formal-approval PRs.
 
 For repository context, we restricted the nonformal comparison PRs to
@@ -264,169 +241,144 @@ merged subset. Repository identity uses the saved canonical repository
 name when available, otherwise the original roster name. This combines
 saved aliases for renamed repositories.
 
-\subsection{Checking the saved head}
+\subsection{Checking the saved commit}
 
 We drew a separate random sample of 20 merged PRs from the linked frozen
-roster, using seed 20261113. For each, we compared the saved head with
-the current head and the last commit in the complete PR commit list
-\cite{github_commits}. All 20 saved heads matched both API values.
-Five PRs had a two-parent merge commit, and the saved head matched its
-second parent in all five. This directly verifies the head at merge for
+roster, using seed 20261113. For each, we compared the saved commit with
+the current PR commit and the last commit in the complete PR commit list
+\cite{github_commits}. All 20 saved commits matched both API values.
+Five PRs had a two-parent merge commit, and the saved commit matched its
+second parent in all five. This directly verifies the PR commit at merge for
 those five cases. Squash and rebase merges lack this second-parent check.
-We use \emph{head at merge} for the five verified cases and \emph{saved head}
+We use \emph{PR commit at merge} for the five verified cases and \emph{saved commit}
 for the combined tables.
 
 \section{Results}
 
-\subsection{Merges following changes recommendations}
+\subsection{Merges after changes verdicts}
 
-In the changes group, \ChangesMatches{} of \ChangesComparable{}
-comparable merged PRs (\ChangesMatchRate{}) had the same saved-head
-SHA as the selected reviewed commit. The other \ChangesMismatches{}
-(\ChangesMismatchRate{}) had a different saved head. Across groups,
-\OverallMatches{} of \OverallComparable{} comparable merges
-(\OverallMatchRate{}) had matching heads.
+Some PRs merged after a changes verdict had matching reviewed and saved
+commits (\ChangesMatchRate{}). Most had a different saved commit
+(\ChangesMismatchRate{}). Matching commits were more common after an
+approval verdict (\ReadyMatchRate{}). Across all verdict groups, the
+reviewed and saved commits matched in \OverallMatchRate{} of comparable
+merges. Table~\ref{tab:outcomes} gives the counts and denominators.
 
-Table~\ref{tab:outcomes} reports the main text-assessment outcomes.
-Approval recommendations had a merge rate of \ReadyMergeRate{};
-changes recommendations had a merge rate of \ChangesMergeRate{}.
-The difference was \MergeGapPP{} percentage points.
-Among PRs recorded as merged or closed, merge rates were
-\ReadyTerminalMergeRate{} (\ReadyMerged{} of \ReadyTerminalPRs{}) after
-approval recommendations and \ChangesTerminalMergeRate{}
-(\ChangesMerged{} of \ChangesTerminalPRs{}) after changes recommendations,
-a gap of \TerminalMergeGapPP{} percentage points. Open PRs made up
-\ReadyOpenRate{} of the approval group and \ChangesOpenRate{} of the
-changes group. These terminal-only rates remain descriptive and do not
-standardize the amount of follow-up.
+Most PRs merged in both the approval and changes groups. Merges were
+more common after approval verdicts (\ReadyMergeRate{}) than after
+changes verdicts (\ChangesMergeRate{}). The gap was \MergeGapPP{}
+percentage points.
 
+The gap narrowed when open PRs were excluded (\TerminalMergeGapPP{}
+percentage points). Among PRs recorded as merged or closed, merge rates
+were \ReadyTerminalMergeRate{} after approval verdicts
+(\ReadyMerged{}/\ReadyTerminalPRs{}) and \ChangesTerminalMergeRate{}
+after changes verdicts (\ChangesMerged{}/\ChangesTerminalPRs{}).
+Open PRs were more common in the changes group (\ChangesOpenRate{})
+than in the approval group (\ReadyOpenRate{}).
 
 \input{generated/outcome_table.tex}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.96\linewidth]{generated/merge_outcomes.png}
-\caption{Both bars use all PRs in the assessment group as the denominator.
-The lighter bar counts PRs that merged and had an equal saved head and
-selected reviewed SHA. Missing or ambiguous compared SHAs remain in the
-group denominator and are excluded from that numerator.}
+\caption{Both bars count all PRs in each verdict group. The lighter bar
+counts PRs that merged and had matching reviewed and saved commits.
+PRs with missing or ambiguous commit records stay in the group total
+but do not contribute to the lighter bar.}
 \label{fig:outcomes}
 \end{figure}
 
-SHA equality identifies the same saved and reviewed commit. It does
-not prove that no intermediate commits were pushed and later removed.
-A SHA mismatch identifies different commits; the reviewed commit can
-remain an ancestor of the saved head. Content-equivalent commits can
-have different SHAs after a rebase. These counts do not establish which
-findings were addressed or whether Copilot caused an edit.
+\subsection{Formal approvals and user-account approvals}
 
-\subsection{Formal Copilot approvals and user-account approval records}
-
-Among \FormalMerged{} merged PRs with a qualifying formal Copilot
-approval, \FormalNoUser{} (\FormalNoUserRate{}) had no current
-user-account approval record dated by merge. The full formal-approval
-cohort contained \FormalPRs{} PRs: \FormalMerged{} were merged,
-\FormalClosed{} were closed, and \FormalOpen{} remained open.
-Table~\ref{tab:formal} reports the merged subset separately.
+Most merged PRs with a formal Copilot approval had no current
+user-account approval recorded by merge (\FormalNoUserRate{}).
+Table~\ref{tab:formal} reports the merged cases. Formal approvals were
+rare: the full group contained \FormalPRs{} PRs. Of these,
+\FormalMerged{} merged, \FormalClosed{} closed, and \FormalOpen{}
+remained open.
 
 \input{generated/formal_table.tex}
 
-All \FormalComparable{} merged cases had comparable last formal-approval
-and saved-head SHAs. They matched in \FormalMatches{} cases
-(\FormalMatchRate{}) and differed in \FormalMismatches{}.
-Each formal approval identifies a commit. The formal-approval analysis
-and the text-assessment analysis use separate selection rules and can
-include overlapping PRs.
+The last formally approved commit usually matched the saved commit
+(\FormalMatchRate{}). The commits matched in \FormalMatches{} of
+\FormalComparable{} merged cases and differed in \FormalMismatches{}.
 
-The absence count describes current API evidence. Review states can
-reflect later dismissals, and an account classified as a user can run
-automated activity. These counts do not establish whether a person
-inspected the PR, whether a prior approval was dismissed, or whether
-branch rules required human approval.
+\subsection{Repository context}
 
-
-\subsection{Approval-record context and repository concentration}
-
-Across all \TextBaselinePRs{} merged text-cohort PRs,
-\TextBaselineCount{} (\TextBaselineRate{}) had no current user-account
-approval record dated by merge. Excluding the merged formal-approval
-cohort gave \NonformalBaselineCount{} of \NonformalBaselinePRs{}
-(\NonformalBaselineRate{}). Restricting these nonformal comparison PRs
-to repositories represented in the formal-approval cohort gave
-\SharedBaselineCount{} of \SharedBaselinePRs{} (\SharedBaselineRate{}).
-The additional lower time cutoff gave \PeriodBaselineCount{} of
-\PeriodBaselinePRs{} (\PeriodBaselineRate{}). Table~\ref{tab:approval-context}
-reports the denominators explicitly.
+The high share of PRs without a user-account approval also appeared in
+the comparison PRs from the same repositories. The share was
+\TextBaselineRate{} across all merged PRs with a usable verdict.
+Excluding PRs with a formal Copilot approval gave
+\NonformalBaselineRate{}. In the repositories represented in the formal
+approval group, the comparison share was \SharedBaselineRate{}.
+Applying the additional time cutoff gave \PeriodBaselineRate{}.
+Table~\ref{tab:approval-context} gives each comparison and its denominator.
 
 \input{generated/approval_context_table.tex}
 
-The \FormalNoUserRate{} formal-approval rate is higher than the full
-text-cohort baseline but closely resembles the repository-restricted
-comparison rates. These figures do not support describing the formal
-cohort as having an unusually high approval-absence rate within these
-repositories. The comparison does not establish equivalence between the
-groups or identify the effect of Copilot on user approval behavior.
+The formal approval group's \FormalNoUserRate{} share was higher than
+the overall baseline but close to both comparisons within those
+repositories. A high rate of absent user-account approval records was
+therefore not distinctive to the formal approval group in this setting.
 
-The \FormalPRs{} formal-approval PRs span \FormalRepoCount{} repositories.
-The largest contributes \FormalRepoTopOnePRs{} PRs
-(\FormalRepoTopOneRate{}), and the top five contribute
-\FormalRepoTopFivePRs{} (\FormalRepoTopFiveRate{}). The
-\FormalMerged{} merged cases span \MergedFormalRepoCount{} repositories;
-the largest contributes \MergedFormalRepoTopOnePRs{}
-(\MergedFormalRepoTopOneRate{}) and the top five contribute
+Formal approvals were spread across \FormalRepoCount{} repositories,
+but their contributions were uneven. The largest contributed
+\FormalRepoTopOnePRs{} PRs (\FormalRepoTopOneRate{}), and the top five
+contributed \FormalRepoTopFivePRs{} (\FormalRepoTopFiveRate{}).
+The merged cases covered \MergedFormalRepoCount{} repositories.
+Their largest contributor supplied \MergedFormalRepoTopOnePRs{}
+(\MergedFormalRepoTopOneRate{}), and their top five supplied
 \MergedFormalRepoTopFivePRs{} (\MergedFormalRepoTopFiveRate{}).
-These are PR-weighted descriptive rates with substantial repository
-concentration.
 
-\subsection{Assessments submitted after merge}
+\subsection{Verdicts after merge}
 
-For \PostMergeCount{} of \PostMergeDenominator{} linked merged PRs
-with a current qualifying review (\PostMergeRate{}), every such review
-was submitted after merge. These PRs contribute to the timing analysis
-and fall outside the pre-merge assessment groups. The
-\NoCurrentMergedReview{} linked merged PRs without a current qualifying
-review are reported separately and excluded from this rate.
+Some PRs received all their qualifying verdicts after they had already
+merged (\PostMergeRate{}). This occurred on \PostMergeCount{} of
+\PostMergeDenominator{} merged PRs with a current qualifying verdict.
+Another \NoCurrentMergedReview{} merged PRs had no current qualifying
+verdict and were excluded from this rate.
 
-\subsection{Archive coverage as a measurement warning}
+\subsection{Missing reviews in the archive export}
 
-Table~\ref{tab:audit} reports the validation audit. The export lacked
-at least one qualifying review on \AuditMissingPRs{} of
-\AuditAccessible{} accessible sampled PRs, or \AuditMissingPRRate{}
-(95\% interval \AuditMissingPRLowCI{} to \AuditMissingPRHighCI{}).
-At review level, \AuditMissingReviews{} of \AuditReviewCount{}
-qualifying API review IDs (\AuditMissingReviewRate{}) were absent from
-the export. Adding missing reviews changed the selected assessment
-group on \AuditGroupChanges{} of \AuditLinked{} PRs, or
-\AuditGroupChangeRate{} (\AuditGroupChangeLowCI{} to
-\AuditGroupChangeHighCI{}).
+The archive export missed reviews on many PRs in the validation sample
+(\AuditMissingPRRate{}). The confidence interval ran from
+\AuditMissingPRLowCI{} to \AuditMissingPRHighCI{}. At review level,
+most qualifying API review records were absent from the export
+(\AuditMissingReviewRate{}). Adding the missing reviews changed the
+assigned verdict for \AuditGroupChangeRate{} of sampled PRs with saved
+outcomes. The confidence interval ran from \AuditGroupChangeLowCI{}
+to \AuditGroupChangeHighCI{}. Both intervals use a 95\% confidence level.
+Table~\ref{tab:audit} gives the counts and denominators.
 
 \input{generated/archive_table.tex}
 
-The raw-archive probe recovered \ProbeMissingFound{} of
-\ProbeMissingTested{} sampled missing IDs and \ProbeControlsFound{}
-of \ProbeControlsTested{} positive controls. Reviewer and heading
-filters cannot explain the raw absence of the checked records. This
-supports an archive-coverage gap in the scanned event tables for those
-IDs. The \AuditMissingReviewRate{} figure measures reviews missing
-from our export in the validation sample. The probe does not attribute
-every missing review to one cause or establish absence outside the
-scanned window.
+The raw-archive check also found none of the \ProbeMissingTested{}
+sampled missing review IDs. All \ProbeControlsTested{} positive controls
+were found. The checked records were therefore absent from the scanned
+archive tables before our reviewer and verdict-heading filters were
+applied.
 
 \section{Interpretation and limits}
 
-The study measures review records, PR outcomes, and commit identity.
-The similarity between formal-approval and repository-restricted
-approval-absence rates makes the repository context central to
-interpreting the formal approval result. The baseline subsets are
-unadjusted descriptive comparisons, and the formal cohort's concentration
-limits generalization across repositories. We do not infer that Copilot
-replaces human approval or inspection.
-Software quality and verdict correctness remain unmeasured. A merge
-after a changes recommendation can reflect a repair, an unrelated edit,
-or a decision to proceed. Commits that follow an assessment do not by
-themselves establish that the changes were made because of Copilot.
+The results describe review records, PR outcomes, and commit identity.
+They do not measure code quality or verdict correctness. A merge after a
+changes verdict can follow a repair, an unrelated edit, or a decision to
+proceed. The records do not establish which findings were addressed or
+whether Copilot caused an edit.
 
-The input frame contains public PRs with at least one assessment
+User-account approvals are account records. An account classified as
+\texttt{User} can run automated activity, and a prior approval can later
+be dismissed. An absent current approval record does not establish
+whether a person inspected the PR or whether branch rules required
+human approval.
+
+The comparisons within repositories are unadjusted descriptions.
+Similar aggregate rates do not establish equivalence between groups or
+identify Copilot's effect on approval behavior. The concentration of
+formal approvals also limits generalization across repositories.
+
+The input frame contains public PRs with at least one verdict
 captured by the original extraction. PRs entirely absent from that frame
 are outside the study. The full-roster collection obtained complete
 lists for \CoverageRate{} of input PRs. The \UnavailableLists{} unavailable PRs, \ErrorLists{} collection
@@ -444,7 +396,7 @@ a measurement of the frozen export, with a targeted raw-archive check.
 The API histories reflect records available when fetched on
 12--13 November 2026. Text and review states can change, and deleted
 records can be unavailable. Submission time dates the review record;
-an assessment heading can have been added later. Pagination is not an
+a verdict heading can have been added later. Pagination is not an
 atomic snapshot of a changing PR.
 
 The outcomes remain frozen at their earlier collection times. PRs
@@ -453,23 +405,23 @@ PRs can merge later. Merge-rate gaps are observed associations; this
 analysis does not adjust them for PR size, repository practices,
 author type, or elapsed time.
 
-The saved head is a snapshot measurement. It is directly verified as
-the head at merge for the five second-parent checks. Current API
+The saved commit is a snapshot measurement. It is directly verified as
+the PR commit at merge for the five second-parent checks. Current API
 agreement alone does not supply that historical verification across
-the full cohort. SHA equality also measures commit identity rather
-than content equivalence.
+the full group. Matching identifiers establish the same commit, but
+intermediate commits may have been pushed and later removed. Different
+identifiers can represent equivalent code after a rebase. A different
+reviewed commit may also remain an ancestor of the saved commit.
 
 \section{Conclusion}
 
 In the changes-recommendation group, \ChangesMatches{} of
 \ChangesComparable{} comparable merges (\ChangesMatchRate{}) had the
-same saved-head SHA as the selected reviewed commit, compared with
+same saved commit as the selected reviewed commit, compared with
 \ReadyMatchRate{} after approval recommendations. Across the
-\OutcomePRs{}-PR text-assessment cohort, merge rates differed by
+\OutcomePRs{}-PR verdict cohort, merge rates differed by
 \MergeGapPP{} percentage points between approval and changes
-recommendations. These observations concern commit identity and
-recorded outcomes; they do not establish whether review findings were
-addressed or whether Copilot caused an edit.
+recommendations. 
 
 Of \FormalMerged{} merged PRs with a qualifying formal Copilot
 approval, \FormalNoUser{} (\FormalNoUserRate{}) had no current
@@ -477,23 +429,17 @@ user-account approval record dated by merge. The corresponding rate
 was \SharedBaselineRate{} among nonformal comparison merges in the
 same formal-cohort repositories. The \FormalPRs{} formal-approval PRs
 spanned \FormalRepoCount{} repositories, with \FormalRepoTopFiveRate{}
-from the top five. The formal result therefore requires explicit
-repository context and does not establish historical absence of human
-inspection.
+from the top five. These rates require repository context.
 
 Separately, \PostMergeRate{} of merged PRs with a current qualifying
 review had every such review submitted after merge. The archive audit
 changed the selected group on \AuditGroupChangeRate{} of linked
-sampled PRs after missing reviews were added. These findings support
-using complete API review histories and reporting assessment selection,
-timing, approval-state, commit definitions, and repository composition
-explicitly.
+sampled PRs after missing reviews were added. Complete review histories and repository context are central to interpreting these outcomes.
 
-\clearpage
 \section{Reproducibility and AI assistance}
 
 Replication materials include frozen inputs and outcomes, selected PR-level
-text-assessment results, validation samples, collection and analysis
+verdict results, validation samples, collection and analysis
 scripts, and the approval-context audit. The build regenerates
 Tables~\ref{tab:outcomes}--\ref{tab:audit}, Figure~\ref{fig:outcomes}, and
 percentages from saved machine-readable results. The raw-archive query

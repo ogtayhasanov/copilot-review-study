@@ -1,6 +1,6 @@
-Table 1. Text assessments
+Table 1. Verdicts
 
-| Assessment | PRs | Merged | Matching heads among merges |
+| Verdict | PRs | Merged | Matching commits among merges |
 |---|---|---|---|
 | Approval recommended | 23,967 | 21,503 (89.7%) | 16,755/21,473 (78.0%) |
 | Changes recommended | 27,648 | 22,648 (81.9%) | 6,437/22,590 (28.5%) |
@@ -14,16 +14,16 @@ Table 2. Formal approvals
 | Recorded as merged | 418/429 | 97.4% |
 | Merged with no current user-account approval record dated by merge | 389/418 | 93.1% |
 | Merged PR authored by an account classified as a bot | 43/418 | 10.3% |
-| Last formal-approval SHA matched the saved head | 410/418 | 98.1% |
+| Last formally approved commit matched the saved commit | 410/418 | 98.1% |
 
 Table 3. Approval-record context
 
 | Merged PR group | Count | Share |
 |---|---|---|
 | Formal Copilot approvals | 389/418 | 93.1% |
-| All merged text-assessment PRs | 40,702/59,759 | 68.1% |
-| Text-assessment PRs without formal Copilot approval | 40,313/59,341 | 67.9% |
-| Nonformal comparison PRs in formal-cohort repositories | 1,114/1,193 | 93.4% |
+| All merged PRs with a verdict | 40,702/59,759 | 68.1% |
+| PRs without formal Copilot approval | 40,313/59,341 | 67.9% |
+| Comparison PRs in repositories with formal approvals | 1,114/1,193 | 93.4% |
 | Same repositories, merged on/after first formal approval | 1,100/1,179 | 93.3% |
 
 Table 4. Archive audit

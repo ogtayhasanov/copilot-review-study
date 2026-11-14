@@ -1,0 +1,61 @@
+sample_kind,review_id,raw_event_count,diagnostic,first_archive_event,last_archive_event,archive_repositories,actors,reviewers,actions,headings_seen,events_passing_action_rule,events_passing_reviewer_rule,events_passing_heading_rule,rows_original_rules_would_emit,selected_versions,missing_ids_found_out_of_50,controls_found_out_of_10
+missing,5105366827,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5112102635,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5124451015,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5125935299,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5132249245,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5141106447,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5153333017,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5166564622,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5172283946,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5173931225,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5195997735,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5202007787,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5213067111,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5224670239,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5225336026,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5225815199,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5228525527,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5235480523,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5245756933,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5246882429,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5262750440,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5269802271,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5280310939,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5293819907,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5297436660,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5309147211,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5331932973,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5365429728,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5375192543,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5379696791,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5393774953,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5407547842,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5411985249,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5435405790,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5435949660,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5436928450,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5448836457,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5449098880,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5451196918,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5453093181,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5490670134,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5530735726,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5561702538,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5590898686,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5611476557,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5647647942,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5648214727,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5696799978,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5784971595,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+missing,5796535426,0,NOT_FOUND_IN_SCANNED_ARCHIVE_WINDOW,,,,,,,,,,,0,,0,10
+positive_control,5108384897,1,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-09-04 01:38:44 UTC,2026-09-04 01:38:44 UTC,archetech/archon,Copilot,copilot,created,changes recommended,1,1,1,1,archetech/archon | created | copilot | changes recommended,0,10
+positive_control,5110648580,1,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-09-04 08:05:40 UTC,2026-09-04 08:05:40 UTC,home-assistant/core,Copilot,copilot,created,changes recommended,1,1,1,1,home-assistant/core | created | copilot | changes recommended,0,10
+positive_control,5120618530,1,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-09-05 09:02:27 UTC,2026-09-05 09:02:27 UTC,DevSecNinja/net-worth-calculator,Copilot,copilot,created,changes recommended,1,1,1,1,DevSecNinja/net-worth-calculator | created | copilot | changes recommended,0,10
+positive_control,5123570544,2,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-09-06 00:34:53 UTC,2026-09-06 00:34:53 UTC,Cacti/cacti,Copilot,copilot,"updated, created",approval recommended,2,2,2,1,Cacti/cacti | created | copilot | approval recommended,0,10
+positive_control,5126580195,1,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-09-06 20:50:24 UTC,2026-09-06 20:50:24 UTC,cbasszerofive/vacation-pages,Copilot,copilot,created,changes recommended,1,1,1,1,cbasszerofive/vacation-pages | created | copilot | changes recommended,0,10
+positive_control,5126761207,2,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-09-06 22:04:04 UTC,2026-09-06 22:04:04 UTC,cbasszerofive/vacation-pages,Copilot,copilot,"created, updated",approval recommended,2,2,2,1,cbasszerofive/vacation-pages | created | copilot | approval recommended,0,10
+positive_control,5173719779,2,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-09-11 00:30:30 UTC,2026-09-11 00:30:30 UTC,hellices/korvid,Copilot,copilot,"created, updated",needs a closer look,2,2,2,1,hellices/korvid | created | copilot | needs a closer look,0,10
+positive_control,5272822866,2,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-09-21 23:33:01 UTC,2026-09-21 23:33:01 UTC,mattgodbolt/jsbeeb,Copilot,copilot,"updated, created",changes recommended,2,2,2,1,mattgodbolt/jsbeeb | created | copilot | changes recommended,0,10
+positive_control,5461823637,1,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-10-08 19:27:20 UTC,2026-10-08 19:27:20 UTC,cubrid-lab/sqlalchemy-cubrid,Copilot,copilot,updated,changes recommended,1,1,1,1,cubrid-lab/sqlalchemy-cubrid | updated | copilot | changes recommended,0,10
+positive_control,5672603070,1,PRESENT_AND_ORIGINAL_RULES_WOULD_EMIT,2026-10-27 18:50:16 UTC,2026-10-27 18:50:16 UTC,Istari-digital/charts,Copilot,copilot,created,needs a closer look,1,1,1,1,Istari-digital/charts | created | copilot | needs a closer look,0,10

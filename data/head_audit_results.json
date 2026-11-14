@@ -1,0 +1,431 @@
+{
+  "seed": 20261113,
+  "population": 65869,
+  "results": [
+    {
+      "repo": "aipoch/open-science",
+      "pr": 2242,
+      "merged_at": "2026-09-06T11:11:42+00:00",
+      "saved_head": "537dbaa811a1d787483314983eead1d23fbf4cff",
+      "live_head": "537dbaa811a1d787483314983eead1d23fbf4cff",
+      "live_merged_at": "2026-09-06T11:11:42Z",
+      "merge_sha": "260da2fd88b5f8b61b2b408152f2260d6329f181",
+      "reported_commit_count": 1,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 1,
+      "last_pr_commit": "537dbaa811a1d787483314983eead1d23fbf4cff",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "c48e0036de7188884d23652a7561e16038359090"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "aljobson/veyrnox.ai",
+      "pr": 59,
+      "merged_at": "2026-09-12T14:58:53+00:00",
+      "saved_head": "6b692bce1542189e1d78ba812eb46bfe24619238",
+      "live_head": "6b692bce1542189e1d78ba812eb46bfe24619238",
+      "live_merged_at": "2026-09-12T14:58:53Z",
+      "merge_sha": "ea483dd621965714fe0599f8ca3b497e5ae4370e",
+      "reported_commit_count": 1,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 1,
+      "last_pr_commit": "6b692bce1542189e1d78ba812eb46bfe24619238",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "7f7fbff66e31e9d0082432152db7c274f9e40e9c"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "ammitto/ammitto",
+      "pr": 92,
+      "merged_at": "2026-09-04T12:16:35+00:00",
+      "saved_head": "a97ce9ee8602845f6c32c7f7656f81eedaff618b",
+      "live_head": "a97ce9ee8602845f6c32c7f7656f81eedaff618b",
+      "live_merged_at": "2026-09-04T12:16:35Z",
+      "merge_sha": "281004eb9a5c33fcdb8d85284669e95b698171ae",
+      "reported_commit_count": 1,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 1,
+      "last_pr_commit": "a97ce9ee8602845f6c32c7f7656f81eedaff618b",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "dcdba8fad682ed3f28af616562fc9b3dd8ac2733"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "automattic/wp-calypso",
+      "pr": 114200,
+      "merged_at": "2026-09-29T15:56:51+00:00",
+      "saved_head": "4d2cfddaa9268bf2dea9aad5cb7644687eb0abab",
+      "live_head": "4d2cfddaa9268bf2dea9aad5cb7644687eb0abab",
+      "live_merged_at": "2026-09-29T15:56:51Z",
+      "merge_sha": "145b38a387fe91ecfffcec884430be49e0bb9e68",
+      "reported_commit_count": 86,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 86,
+      "last_pr_commit": "4d2cfddaa9268bf2dea9aad5cb7644687eb0abab",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "3400c97a8ca5240d091aee21c7fb7855aa96c624"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "benny3840rg/jarvis",
+      "pr": 443,
+      "merged_at": "2026-09-06T00:43:36+00:00",
+      "saved_head": "ab14db85e939bc0f5d8961eefd4b408c40b7dc4c",
+      "live_head": "ab14db85e939bc0f5d8961eefd4b408c40b7dc4c",
+      "live_merged_at": "2026-09-06T00:43:36Z",
+      "merge_sha": "056a106033eac423248df5ad179b627c5837a7a3",
+      "reported_commit_count": 1,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 1,
+      "last_pr_commit": "ab14db85e939bc0f5d8961eefd4b408c40b7dc4c",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "d2f8b65cfe31715c632c2f1b262ed38f1f54d523"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "black-flag-collective/bfd-style-guide",
+      "pr": 9,
+      "merged_at": "2026-09-23T05:04:43+00:00",
+      "saved_head": "cdd649c7448f19dac87dee319cf470f938a5a161",
+      "live_head": "cdd649c7448f19dac87dee319cf470f938a5a161",
+      "live_merged_at": "2026-09-23T05:04:43Z",
+      "merge_sha": "b4c2eb93b6dc7dfda8e318cf010a5a472b76e1dc",
+      "reported_commit_count": 1,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 1,
+      "last_pr_commit": "cdd649c7448f19dac87dee319cf470f938a5a161",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "ed5295dcf6e97eb04ea909b9306de24caa1202a8"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "camunda/camunda-deployment-references",
+      "pr": 3628,
+      "merged_at": "2026-10-08T10:15:28+00:00",
+      "saved_head": "321185aecdf844b0a8276ccd02c1531106743291",
+      "live_head": "321185aecdf844b0a8276ccd02c1531106743291",
+      "live_merged_at": "2026-10-08T10:15:28Z",
+      "merge_sha": "f3de705c9cbe1e516508795610d9ba4306399235",
+      "reported_commit_count": 11,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 11,
+      "last_pr_commit": "321185aecdf844b0a8276ccd02c1531106743291",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "2e07d2addb0150d39286a0a4eb457c0e9ebd4373"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "dangra/durable",
+      "pr": 42,
+      "merged_at": "2026-09-05T18:21:34+00:00",
+      "saved_head": "95154a358c615b4a8ed671937a3676a8fe3106de",
+      "live_head": "95154a358c615b4a8ed671937a3676a8fe3106de",
+      "live_merged_at": "2026-09-05T18:21:34Z",
+      "merge_sha": "9c1f5b4fafd9b2473480c9083bf994510531414e",
+      "reported_commit_count": 2,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 2,
+      "last_pr_commit": "95154a358c615b4a8ed671937a3676a8fe3106de",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "90e443fd2856e9ea4a2d0aa0dfe8a317467a26fb"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "dfinity/oisy-wallet",
+      "pr": 14026,
+      "merged_at": "2026-09-11T12:10:55+00:00",
+      "saved_head": "93ca6f29a9b58852cab09867b3070db7857b0781",
+      "live_head": "93ca6f29a9b58852cab09867b3070db7857b0781",
+      "live_merged_at": "2026-09-11T12:10:55Z",
+      "merge_sha": "93a8d9e99b8ac7b691396b98993baa1951311442",
+      "reported_commit_count": 12,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 12,
+      "last_pr_commit": "93ca6f29a9b58852cab09867b3070db7857b0781",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "d738590ac1e2b85bfb8c9ff7a243bd2ccc4151a2"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "elsa-workflows/elsa-foundation",
+      "pr": 1709,
+      "merged_at": "2026-09-13T07:33:58+00:00",
+      "saved_head": "7fcc091d32f69dd6c30b57d8d143d5410ebc506c",
+      "live_head": "7fcc091d32f69dd6c30b57d8d143d5410ebc506c",
+      "live_merged_at": "2026-09-13T07:33:58Z",
+      "merge_sha": "ec5ec65256dbe20b7ca76b46aa5a888ac60e4acd",
+      "reported_commit_count": 13,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 13,
+      "last_pr_commit": "7fcc091d32f69dd6c30b57d8d143d5410ebc506c",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "9f5d0eb074aa7d176be3609ac6d7243c4f2cf35c"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "enpasos/skillpilot",
+      "pr": 64,
+      "merged_at": "2026-09-30T10:50:22+00:00",
+      "saved_head": "f7da4a136def5e832f34745c9d2f5f91e73f8d08",
+      "live_head": "f7da4a136def5e832f34745c9d2f5f91e73f8d08",
+      "live_merged_at": "2026-09-30T10:50:22Z",
+      "merge_sha": "8a8f67743d94e2f51c546547abd2c53b6df6aada",
+      "reported_commit_count": 3,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 3,
+      "last_pr_commit": "f7da4a136def5e832f34745c9d2f5f91e73f8d08",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "3a8530cab79941c84a39e67c289c29ab852928fb"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "harmonicinc-video/external-asset-ism-ismc-generation-tool",
+      "pr": 28,
+      "merged_at": "2026-09-17T11:57:34+00:00",
+      "saved_head": "bc686b295efa2e88af498db2c1ea3f06233d500d",
+      "live_head": "bc686b295efa2e88af498db2c1ea3f06233d500d",
+      "live_merged_at": "2026-09-17T11:57:34Z",
+      "merge_sha": "b73d22b184bdbe1afdae1cb6436bb944255c7857",
+      "reported_commit_count": 4,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 4,
+      "last_pr_commit": "bc686b295efa2e88af498db2c1ea3f06233d500d",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "c52d96983c273a464386ac63acb5eae83292a7c2"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "mitodl/ol-infrastructure",
+      "pr": 5837,
+      "merged_at": "2026-09-11T21:05:05+00:00",
+      "saved_head": "36f9e4f1c686e3595f6101c0edea32e941519b6d",
+      "live_head": "36f9e4f1c686e3595f6101c0edea32e941519b6d",
+      "live_merged_at": "2026-09-11T21:05:05Z",
+      "merge_sha": "8f063b9e38c06492e61e63d107b3b84100c23329",
+      "reported_commit_count": 1,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 1,
+      "last_pr_commit": "36f9e4f1c686e3595f6101c0edea32e941519b6d",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "d6617c29b7d93323600a50f31f80720de0659ae8"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "mongodb-js/devtools-shared",
+      "pr": 884,
+      "merged_at": "2026-09-09T14:24:21+00:00",
+      "saved_head": "009dd643f9aa54d77c84b36d50f122e2b9cd3304",
+      "live_head": "009dd643f9aa54d77c84b36d50f122e2b9cd3304",
+      "live_merged_at": "2026-09-09T14:24:21Z",
+      "merge_sha": "5bbf19240cf71aa8acd7898dcb56f1b8bf47395a",
+      "reported_commit_count": 1,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 1,
+      "last_pr_commit": "009dd643f9aa54d77c84b36d50f122e2b9cd3304",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "5763f5843e429b95345c2ff4bd7b649c00cc1422"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    },
+    {
+      "repo": "motamman/signalk-weather-router-plus",
+      "pr": 39,
+      "merged_at": "2026-10-14T01:31:28+00:00",
+      "saved_head": "d0cb0608527b3b323ff0d0faffa0ff463d46f56d",
+      "live_head": "d0cb0608527b3b323ff0d0faffa0ff463d46f56d",
+      "live_merged_at": "2026-10-14T01:31:28Z",
+      "merge_sha": "1aa1c0bb81f3a32dcb12201942d1c6be04ef1946",
+      "reported_commit_count": 22,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 22,
+      "last_pr_commit": "d0cb0608527b3b323ff0d0faffa0ff463d46f56d",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "efe2d03ece75696d543640bccc9f2bf845562405",
+        "d0cb0608527b3b323ff0d0faffa0ff463d46f56d"
+      ],
+      "saved_equals_second_parent": true,
+      "complete": true
+    },
+    {
+      "repo": "powr-life/powr",
+      "pr": 456,
+      "merged_at": "2026-09-06T08:32:40+00:00",
+      "saved_head": "ba87f095bcafa1b1dd4ce89ffc8d47f62a3baa09",
+      "live_head": "ba87f095bcafa1b1dd4ce89ffc8d47f62a3baa09",
+      "live_merged_at": "2026-09-06T08:32:40Z",
+      "merge_sha": "f67e06f04561e4842884806da4aae77bfcad8fe3",
+      "reported_commit_count": 2,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 2,
+      "last_pr_commit": "ba87f095bcafa1b1dd4ce89ffc8d47f62a3baa09",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "5251beec53145611de27e7571e67310327cbf9d2",
+        "ba87f095bcafa1b1dd4ce89ffc8d47f62a3baa09"
+      ],
+      "saved_equals_second_parent": true,
+      "complete": true
+    },
+    {
+      "repo": "roseteromeo56/cbl-mariner",
+      "pr": 155,
+      "merged_at": "2026-10-02T16:14:26+00:00",
+      "saved_head": "66193e75f3e63a4bec2197e68e8b9002037bc039",
+      "live_head": "66193e75f3e63a4bec2197e68e8b9002037bc039",
+      "live_merged_at": "2026-10-02T16:14:26Z",
+      "merge_sha": "f89b455822ee7b6e54b1c069f6b2f71fbce19c91",
+      "reported_commit_count": 2,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 2,
+      "last_pr_commit": "66193e75f3e63a4bec2197e68e8b9002037bc039",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "0be92e5c69ff92d3a95b01cedcdd8698e5185ccb",
+        "66193e75f3e63a4bec2197e68e8b9002037bc039"
+      ],
+      "saved_equals_second_parent": true,
+      "complete": true
+    },
+    {
+      "repo": "substancelab/classlist",
+      "pr": 23,
+      "merged_at": "2026-10-06T08:50:29+00:00",
+      "saved_head": "e0d5d4cf15b8b84caee6934616704a837c5f694f",
+      "live_head": "e0d5d4cf15b8b84caee6934616704a837c5f694f",
+      "live_merged_at": "2026-10-06T08:50:29Z",
+      "merge_sha": "13c5770e457168b94d7add41d38efef5e46dacef",
+      "reported_commit_count": 3,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 3,
+      "last_pr_commit": "e0d5d4cf15b8b84caee6934616704a837c5f694f",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "e8cb34f4947b45fa92f3500bcaa3a7d4e6c352c6",
+        "e0d5d4cf15b8b84caee6934616704a837c5f694f"
+      ],
+      "saved_equals_second_parent": true,
+      "complete": true
+    },
+    {
+      "repo": "todc/todc-bootstrap",
+      "pr": 2022,
+      "merged_at": "2026-11-04T19:10:21+00:00",
+      "saved_head": "043c2b2e6ed6b0a7b55f163d496de09a2175192e",
+      "live_head": "043c2b2e6ed6b0a7b55f163d496de09a2175192e",
+      "live_merged_at": "2026-11-04T19:10:21Z",
+      "merge_sha": "98b9806915613be0b1424921952f8f50610e3aa8",
+      "reported_commit_count": 1,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 1,
+      "last_pr_commit": "043c2b2e6ed6b0a7b55f163d496de09a2175192e",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "f1de8646d797f8cda43b97307f93e371abc90759",
+        "043c2b2e6ed6b0a7b55f163d496de09a2175192e"
+      ],
+      "saved_equals_second_parent": true,
+      "complete": true
+    },
+    {
+      "repo": "zephyrproject-rtos/zephyr",
+      "pr": 120918,
+      "merged_at": "2026-10-05T08:09:02+00:00",
+      "saved_head": "e553f1493d6d03ee3f282addf787c90d87a39553",
+      "live_head": "e553f1493d6d03ee3f282addf787c90d87a39553",
+      "live_merged_at": "2026-10-05T08:09:02Z",
+      "merge_sha": "d1c32371ed17f7e3012dd5f8f31d79a1e60b4f35",
+      "reported_commit_count": 1,
+      "merge_time_matches": true,
+      "commits_complete": true,
+      "commits_returned": 1,
+      "last_pr_commit": "e553f1493d6d03ee3f282addf787c90d87a39553",
+      "saved_equals_last": true,
+      "live_equals_last": true,
+      "merge_parents": [
+        "f8523a9c66e0d1a86e16d9037e0284bb36dbdfbb"
+      ],
+      "saved_equals_second_parent": false,
+      "complete": true
+    }
+  ]
+}

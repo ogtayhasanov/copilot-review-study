@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+*.sqlite
+*.sqlite-*
+*.sqlite.lock
+*.aux
+*.log
+*.out
+*.toc
+recomputed_full_review_results.*
+reviews_failures.csv

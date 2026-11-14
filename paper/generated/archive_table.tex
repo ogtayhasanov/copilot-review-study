@@ -1,0 +1,17 @@
+\begin{table}[H]
+\centering
+\caption{Validation of the frozen export. Review-level and PR-level denominators are stated separately.}
+\label{tab:audit}
+\small
+\begin{tabular}{@{}p{0.60\linewidth}rr@{}}
+\toprule
+Measure & Count & Share \\
+\midrule
+Complete review lists in the random validation sample & 1,923/2,000 & 96.2\% \\
+PRs with a qualifying API review absent from the export & 870/1,923 & 45.2\% \\
+Qualifying API reviews absent from the export & 5,056/7,355 & 68.7\% \\
+Selected group changed after adding missing reviews & 348/1,921 & 18.1\% \\
+All-after-merge status changed after adding missing reviews & 12/1,642 & 0.7\% \\
+\bottomrule
+\end{tabular}
+\end{table}

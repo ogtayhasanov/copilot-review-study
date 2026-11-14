@@ -1,0 +1,13 @@
+{
+  "source_kind": "analysis_json_with_pr_rows",
+  "rows_checked": 69801,
+  "result_file": "full_review_results.json",
+  "result_sha256": "855a833ee7b022ddb21613e5a64911391a235f4d0ef4325b6ebc71bf35618431",
+  "repository_url": "https://github.com/ogtayhasanov/copilot-review-study",
+  "tables": [
+    "formal_table.tex",
+    "outcome_table.tex",
+    "archive_table.tex"
+  ],
+  "formal_approval_validation": "aggregate constraints; approval-level records are in the native-review checkpoint"
+}
